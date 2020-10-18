@@ -2,6 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>GOOGLESANS-REGULAR.TTF</string>
+		<string>sf-ui-display-bold-58646a511e3d9.otf</string>
+		<string>sf-ui-display-heavy-586470160b9e5.otf</string>
+		<string>sf-ui-display-light-58646b33e0551.otf</string>
+		<string>sf-ui-display-medium-58646be638f96.otf</string>
+		<string>sf-ui-display-semibold-58646eddcae92.otf</string>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

@@ -14,6 +14,14 @@
 		ECC18CB8253ACB000034D711 /* Trashure.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CB6253ACB000034D711 /* Trashure.xcdatamodeld */; };
 		ECC18CBA253ACB020034D711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC18CB9253ACB020034D711 /* Assets.xcassets */; };
 		ECC18CBD253ACB020034D711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC18CBB253ACB020034D711 /* LaunchScreen.storyboard */; };
+		ECC18CD0253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = ECC18CCF253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF */; };
+		ECEFE33A253B6D5800FA1139 /* sf-ui-display-light-58646b33e0551.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE332253B6D5600FA1139 /* sf-ui-display-light-58646b33e0551.otf */; };
+		ECEFE33B253B6D5800FA1139 /* sf-ui-display-heavy-586470160b9e5.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE333253B6D5700FA1139 /* sf-ui-display-heavy-586470160b9e5.otf */; };
+		ECEFE33D253B6D5800FA1139 /* sf-ui-display-medium-58646be638f96.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE335253B6D5700FA1139 /* sf-ui-display-medium-58646be638f96.otf */; };
+		ECEFE33E253B6D5800FA1139 /* sf-ui-display-bold-58646a511e3d9.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE336253B6D5700FA1139 /* sf-ui-display-bold-58646a511e3d9.otf */; };
+		ECEFE33F253B6D5800FA1139 /* sf-ui-display-semibold-58646eddcae92.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE337253B6D5800FA1139 /* sf-ui-display-semibold-58646eddcae92.otf */; };
+		ECEFE34B253BFF5900FA1139 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE34A253BFF5900FA1139 /* Checkbox.swift */; };
+		ECEFE354253C611A00FA1139 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE353253C611A00FA1139 /* DesignableTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +34,14 @@
 		ECC18CB9253ACB020034D711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECC18CBC253ACB020034D711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECC18CBE253ACB020034D711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECC18CCF253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GOOGLESANS-REGULAR.TTF"; sourceTree = "<group>"; };
+		ECEFE332253B6D5600FA1139 /* sf-ui-display-light-58646b33e0551.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-light-58646b33e0551.otf"; sourceTree = "<group>"; };
+		ECEFE333253B6D5700FA1139 /* sf-ui-display-heavy-586470160b9e5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-heavy-586470160b9e5.otf"; sourceTree = "<group>"; };
+		ECEFE335253B6D5700FA1139 /* sf-ui-display-medium-58646be638f96.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-medium-58646be638f96.otf"; sourceTree = "<group>"; };
+		ECEFE336253B6D5700FA1139 /* sf-ui-display-bold-58646a511e3d9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-bold-58646a511e3d9.otf"; sourceTree = "<group>"; };
+		ECEFE337253B6D5800FA1139 /* sf-ui-display-semibold-58646eddcae92.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-semibold-58646eddcae92.otf"; sourceTree = "<group>"; };
+		ECEFE34A253BFF5900FA1139 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		ECEFE353253C611A00FA1139 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +74,64 @@
 		ECC18CAC253ACB000034D711 /* Trashure */ = {
 			isa = PBXGroup;
 			children = (
-				ECC18CAD253ACB000034D711 /* AppDelegate.swift */,
-				ECC18CAF253ACB000034D711 /* SceneDelegate.swift */,
-				ECC18CB1253ACB000034D711 /* ViewController.swift */,
-				ECC18CB3253ACB000034D711 /* Main.storyboard */,
+				ECC18CCE253B6AEA0034D711 /* Font */,
+				ECC18CC8253AD90E0034D711 /* Base */,
+				ECC18CCC253AD9460034D711 /* Model */,
+				ECC18CCB253AD93B0034D711 /* Controller */,
+				ECC18CCA253AD9210034D711 /* View */,
 				ECC18CB9253ACB020034D711 /* Assets.xcassets */,
-				ECC18CBB253ACB020034D711 /* LaunchScreen.storyboard */,
 				ECC18CBE253ACB020034D711 /* Info.plist */,
-				ECC18CB6253ACB000034D711 /* Trashure.xcdatamodeld */,
 			);
 			path = Trashure;
+			sourceTree = "<group>";
+		};
+		ECC18CC8253AD90E0034D711 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				ECC18CAD253ACB000034D711 /* AppDelegate.swift */,
+				ECC18CAF253ACB000034D711 /* SceneDelegate.swift */,
+				ECEFE34A253BFF5900FA1139 /* Checkbox.swift */,
+				ECEFE353253C611A00FA1139 /* DesignableTextField.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		ECC18CCA253AD9210034D711 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ECC18CB3253ACB000034D711 /* Main.storyboard */,
+				ECC18CBB253ACB020034D711 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECC18CCB253AD93B0034D711 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ECC18CB1253ACB000034D711 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ECC18CCC253AD9460034D711 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ECC18CB6253ACB000034D711 /* Trashure.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ECC18CCE253B6AEA0034D711 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				ECC18CCF253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF */,
+				ECEFE336253B6D5700FA1139 /* sf-ui-display-bold-58646a511e3d9.otf */,
+				ECEFE333253B6D5700FA1139 /* sf-ui-display-heavy-586470160b9e5.otf */,
+				ECEFE332253B6D5600FA1139 /* sf-ui-display-light-58646b33e0551.otf */,
+				ECEFE335253B6D5700FA1139 /* sf-ui-display-medium-58646be638f96.otf */,
+				ECEFE337253B6D5800FA1139 /* sf-ui-display-semibold-58646eddcae92.otf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,9 +191,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECEFE33A253B6D5800FA1139 /* sf-ui-display-light-58646b33e0551.otf in Resources */,
+				ECEFE33D253B6D5800FA1139 /* sf-ui-display-medium-58646be638f96.otf in Resources */,
 				ECC18CBD253ACB020034D711 /* LaunchScreen.storyboard in Resources */,
+				ECEFE33B253B6D5800FA1139 /* sf-ui-display-heavy-586470160b9e5.otf in Resources */,
 				ECC18CBA253ACB020034D711 /* Assets.xcassets in Resources */,
+				ECEFE33E253B6D5800FA1139 /* sf-ui-display-bold-58646a511e3d9.otf in Resources */,
 				ECC18CB5253ACB000034D711 /* Main.storyboard in Resources */,
+				ECEFE33F253B6D5800FA1139 /* sf-ui-display-semibold-58646eddcae92.otf in Resources */,
+				ECC18CD0253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +211,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECC18CB2253ACB000034D711 /* ViewController.swift in Sources */,
+				ECEFE354253C611A00FA1139 /* DesignableTextField.swift in Sources */,
 				ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */,
 				ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */,
 				ECC18CB8253ACB000034D711 /* Trashure.xcdatamodeld in Sources */,
+				ECEFE34B253BFF5900FA1139 /* Checkbox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6M5M727687;
 				INFOPLIST_FILE = Trashure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6M5M727687;
 				INFOPLIST_FILE = Trashure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
