@@ -15,16 +15,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var fbButton: UIButton!
     
-    let button = UIButton(type: .custom)
+    private let button = UIButton(type: .custom)
     
     //MARK: - Main View
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
+        
+        setupView()
     }
     
-    //MARK: - Updating View
-    func updateView() {
+    //MARK: - Customize UI
+    private func setupView() {
         //textfield customize
         emailField.layer.masksToBounds = true
         emailField.layer.cornerRadius = 4
@@ -41,7 +42,7 @@ class ViewController: UIViewController {
         button.setImage(UIImage(named: "look"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 15)
         button.frame = CGRect(x: CGFloat(passField.frame.size.width - 25), y: CGFloat(5), width: CGFloat(25), height: CGFloat(25))
-        button.addTarget(self, action: #selector(self.refresh), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.openPass), for: .touchUpInside)
         passField.rightView = button
         passField.rightViewMode = .always
         
@@ -69,10 +70,14 @@ class ViewController: UIViewController {
         fbButton.layer.shadowOpacity = 0.25
         fbButton.layer.shadowRadius = 12
         fbButton.layer.masksToBounds = false
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.backgroundColor = .clear
     }
 
     //MARK: - Actionable
-    @IBAction func refresh(_ sender: Any) {
+    @IBAction func openPass(_ sender: Any) {
         if passField.isSecureTextEntry {
             passField.isSecureTextEntry = false
             button.setImage(UIImage(named: "lookclick"), for: .normal)
@@ -80,7 +85,19 @@ class ViewController: UIViewController {
             passField.isSecureTextEntry = true
             button.setImage(UIImage(named: "look"), for: .normal)
         }
-        
     }
+    
+    @IBAction func masukPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "toHome", sender: self)
+    }
+    
+    @IBAction func daftarPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "toRegister", sender: self)
+    }
+    
+    
+    @IBAction func forgetPressed(_ sender: UIButton) {
+    }
+    
 }
 
