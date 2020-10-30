@@ -29,10 +29,10 @@ open class ChartViewTahun: MacawView {
     
     private let captionsY = ["100Kg", "70Kg", "50Kg", "35Kg", "25Kg", "10Kg"]
     
-    private let gradientColor = Color.rgba(r: 255, g: 87, b: 34, a: 1.0)
+    private let color = Color.rgba(r: 255, g: 87, b: 34, a: 1.0)
     
     private func createScene() {
-        let viewCenterX = Double((self.frame.width + 30) / 2)
+        let viewCenterX = Double((self.frame.width + 5) / 2)
         
         let barsWidth = Double((barWidth * barsCount) + (barsSpacing * (barsCount - 1)))
         let barsCenterX = viewCenterX - barsWidth / 2
@@ -50,17 +50,16 @@ open class ChartViewTahun: MacawView {
                     rx: 5,
                     ry: 5
                 ),
-                fill: gradientColor
+                fill: color
             )
             mainGroup.contents.append([barShape].group())
         }
         
-        backgroundGroup.place = Transform.move(dx: barsCenterX, dy: 90)
-        mainGroup.place = Transform.move(dx: barsCenterX, dy: 90)
+        mainGroup.place = Transform.move(dx: barsCenterX + 10, dy: 90)
         
         captionsGroup = Group()
         captionsGroup.place = Transform.move(
-            dx: barsCenterX,
+            dx: barsCenterX + 10,
             dy: 100 + Double(barHeight)
         )
         for barIndex in 0...barsCount - 1 {
@@ -92,7 +91,7 @@ open class ChartViewTahun: MacawView {
             milesCaptionGroup.contents.append(text)
         }
         
-        let chartGroup = [milesCaptionGroup].group(place: Transform.move(dx: barsCenterX - 60, dy: 20))
+        let chartGroup = [milesCaptionGroup].group(place: Transform.move(dx: barsCenterX - 62, dy: 17))
         self.node = [mainGroup, captionsGroup, chartGroup].group()
     }
     
@@ -125,7 +124,7 @@ open class ChartViewTahun: MacawView {
                             rx: 5,
                             ry: 5
                         ),
-                        fill: self.gradientColor
+                        fill: self.color
                     )
                     return [barShape]
                 }, during: 0.2, delay: 0).easing(Easing.easeInOut)

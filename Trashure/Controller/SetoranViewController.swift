@@ -27,13 +27,31 @@ class SetoranViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "back")
 
         navigationController?.navigationBar.tintColor = UIColor(named: "DarkBlue")
+    
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 1000, height: 22))
         
-        let label = UILabel()
-        label.textColor = UIColor(named: "DarkBlue")
-        label.text = "Setoran"
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
-        self.navigationItem.leftItemsSupplementBackButton = true
+        let title = UILabel()
+        title.text = "Setoran"
+        title.textColor = UIColor(named: "DarkBlue")
+        title.font = UIFont(name: "SF UI Display Semibold", size: 24)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(title)
+        
+        let leftWidth: CGFloat = 55 // left padding
+        let rightWidth: CGFloat = 75 // right padding
+        let width = view.frame.width - leftWidth - rightWidth
+        let offset = (rightWidth - leftWidth) / 2
+        
+        NSLayoutConstraint.activate([
+            title.topAnchor.constraint(equalTo: container.topAnchor, constant: -10),
+            title.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            title.centerXAnchor.constraint(equalTo: container.centerXAnchor, constant: -offset),
+            title.widthAnchor.constraint(equalToConstant: width)
+        ])
+        
+        
+        self.navigationItem.titleView = container
+
         
         self.navigationController?.navigationBar.layer.masksToBounds = false
         self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor

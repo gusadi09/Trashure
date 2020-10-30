@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C80BDEFBB5A400765FD3492D /* Pods_Trashure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9DCBF0F5D34A94824696B85 /* Pods_Trashure.framework */; };
-		EC4AE79D2547F793004554B8 /* ChartViewMinggu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4AE79C2547F793004554B8 /* ChartViewMinggu.swift */; };
+		EC4AE7BA254BD883004554B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC4AE7B9254BD883004554B8 /* GoogleService-Info.plist */; };
+		EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4C5F27254BEF0700272CDC /* AkunViewController.swift */; };
 		ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CAD253ACB000034D711 /* AppDelegate.swift */; };
 		ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CAF253ACB000034D711 /* SceneDelegate.swift */; };
 		ECC18CB2253ACB000034D711 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CB1253ACB000034D711 /* ViewController.swift */; };
@@ -50,7 +51,8 @@
 		0323348647262202A3CE94BA /* Pods-Trashure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trashure.debug.xcconfig"; path = "Target Support Files/Pods-Trashure/Pods-Trashure.debug.xcconfig"; sourceTree = "<group>"; };
 		643BC89C5F3A255150F5233E /* Pods-Trashure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trashure.release.xcconfig"; path = "Target Support Files/Pods-Trashure/Pods-Trashure.release.xcconfig"; sourceTree = "<group>"; };
 		A9DCBF0F5D34A94824696B85 /* Pods_Trashure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trashure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC4AE79C2547F793004554B8 /* ChartViewMinggu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewMinggu.swift; sourceTree = "<group>"; };
+		EC4AE7B9254BD883004554B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EC4C5F27254BEF0700272CDC /* AkunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkunViewController.swift; sourceTree = "<group>"; };
 		ECC18CAA253ACB000034D711 /* Trashure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trashure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC18CAD253ACB000034D711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECC18CAF253ACB000034D711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				ECC18CCA253AD9210034D711 /* View */,
 				ECC18CB9253ACB020034D711 /* Assets.xcassets */,
 				ECC18CBE253ACB020034D711 /* Info.plist */,
+				EC4AE7B9254BD883004554B8 /* GoogleService-Info.plist */,
 			);
 			path = Trashure;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				ECEFE35F253FE22300FA1139 /* HomeViewController.swift */,
 				ECD09C452545548000C7BD05 /* HargaViewController.swift */,
 				ECD09C622546D87800C7BD05 /* SetoranViewController.swift */,
+				EC4C5F27254BEF0700272CDC /* AkunViewController.swift */,
 				ECD09C432545535E00C7BD05 /* CellController */,
 			);
 			path = Controller;
@@ -238,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				ECD09C712547C03E00C7BD05 /* ChartView.swift */,
-				EC4AE79C2547F793004554B8 /* ChartViewMinggu.swift */,
 				ECD09C742547D28E00C7BD05 /* ChartViewBulan.swift */,
 				ECD09C772547D29D00C7BD05 /* ChartViewTahun.swift */,
 			);
@@ -257,6 +260,7 @@
 				ECC18CA7253ACB000034D711 /* Frameworks */,
 				ECC18CA8253ACB000034D711 /* Resources */,
 				8E0A8163108B36B1510A0A73 /* [CP] Embed Pods Frameworks */,
+				E655B139618BA3099BF2639F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC4AE7BA254BD883004554B8 /* GoogleService-Info.plist in Resources */,
 				ECEFE33A253B6D5800FA1139 /* sf-ui-display-light-58646b33e0551.otf in Resources */,
 				ECEFE33D253B6D5800FA1139 /* sf-ui-display-medium-58646be638f96.otf in Resources */,
 				ECC18CBD253ACB020034D711 /* LaunchScreen.storyboard in Resources */,
@@ -361,6 +366,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E655B139618BA3099BF2639F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trashure/Pods-Trashure-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Trashure/Pods-Trashure-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Trashure/Pods-Trashure-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -385,10 +407,10 @@
 				ECD09C672546E3F400C7BD05 /* SetoranModel.swift in Sources */,
 				ECD09C5D254667BD00C7BD05 /* TipsModel.swift in Sources */,
 				ECD09C462545548000C7BD05 /* HargaViewController.swift in Sources */,
+				EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */,
 				ECC18CB8253ACB000034D711 /* Trashure.xcdatamodeld in Sources */,
 				ECD09C722547C03E00C7BD05 /* ChartView.swift in Sources */,
 				ECD09C752547D28E00C7BD05 /* ChartViewBulan.swift in Sources */,
-				EC4AE79D2547F793004554B8 /* ChartViewMinggu.swift in Sources */,
 				ECD09C522545CE7100C7BD05 /* SetoranCell.swift in Sources */,
 				ECD09C60254667C600C7BD05 /* TipsData.swift in Sources */,
 				ECEFE34B253BFF5900FA1139 /* Checkbox.swift in Sources */,

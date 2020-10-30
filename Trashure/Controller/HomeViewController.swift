@@ -16,7 +16,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var setoranTableView: UITableView!
     @IBOutlet weak var statView: UIView!
     @IBOutlet weak var chartView: ChartView!
-    @IBOutlet weak var chartViewMinggu: ChartViewMinggu!
     @IBOutlet weak var chartViewBulan: ChartViewBulan!
     @IBOutlet weak var chartViewTahun: ChartViewTahun!
     @IBOutlet weak var tipsCollectionView: UICollectionView!
@@ -28,7 +27,7 @@ class HomeViewController: UIViewController {
     let setoranData = SetoranData()
     var arrSelectRow = TipsModel(tipsImage: nil, title: "", isi: "", date: "")
     
-    let thickness: CGFloat = 2.6
+    let thickness: CGFloat = 2.7
     var lineViewMinggu = UIView()
     var lineViewBulan = UIView()
     var lineViewTahun = UIView()
@@ -59,14 +58,6 @@ class HomeViewController: UIViewController {
         chartView.play()
     }
     
-    private func playMinggu() {
-        self.perform(#selector(animateViewsMinggu), with: .none)
-    }
-    
-    @objc open func animateViewsMinggu() {
-        chartViewMinggu.play()
-    }
-    
     private func playBulan() {
         self.perform(#selector(animateViewsBulan), with: .none)
     }
@@ -87,6 +78,16 @@ class HomeViewController: UIViewController {
     private func setupUI() {
         
         self.tipsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        
+        if setoranData.data.count == 0 {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 373, height: 17))
+            let txt = UILabel()
+            txt.textColor = UIColor(named: "DarkBlue")
+            txt.text = "Upss!! Kamu belum pernah menyetorkan sampah"
+            txt.font = .systemFont(ofSize: 14, weight: .regular)
+            view.addSubview(txt)
+            setoranTableView.addSubview(view)
+        }
         
         indikatorSaldoView.clipsToBounds = true
         indikatorSaldoView.layer.cornerRadius = 5
@@ -126,11 +127,17 @@ class HomeViewController: UIViewController {
         label.font = .systemFont(ofSize: 24, weight: .bold)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
         
+        self.navigationController?.navigationBar.layer.masksToBounds = false
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.1
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 4.0)
+        self.navigationController?.navigationBar.layer.shadowRadius = 3
+        
         lineViewMinggu = UIView(frame: CGRect(x: 0, y: mingguButton.frame.size.height + thickness, width: mingguButton.frame.size.width, height: 3))
         
-        lineViewBulan = UIView(frame: CGRect(x: 0, y: bulanButton.frame.size.height + thickness, width: bulanButton.frame.size.width, height: 3))
+        lineViewBulan = UIView(frame: CGRect(x: -6, y: bulanButton.frame.size.height + thickness, width: mingguButton.frame.size.width, height: 3))
         
-        lineViewTahun = UIView(frame: CGRect(x: 0, y: tahunButton.frame.size.height + thickness, width: tahunButton.frame.size.width, height: 3))
+        lineViewTahun = UIView(frame: CGRect(x: -5, y: tahunButton.frame.size.height + thickness, width: mingguButton.frame.size.width, height: 3))
         
         lineViewMinggu.backgroundColor = UIColor(named: "green")
         
@@ -148,7 +155,8 @@ class HomeViewController: UIViewController {
         
         lineViewTahun.clipsToBounds = true
         lineViewTahun.layer.cornerRadius = 1
-    
+        
+        
         chartView.completionCallback = {
             self.play()
         }
@@ -167,14 +175,16 @@ class HomeViewController: UIViewController {
         case mingguButton:
             self.chartViewBulan.isHidden = true
             self.chartViewTahun.isHidden = true
-            self.chartView.isHidden = true
-            self.chartViewMinggu.isHidden = false
+            self.chartView.isHidden = false
             
-            chartViewMinggu.completionCallback = {
-                self.playMinggu()
+            DispatchQueue.main.async {
+                self.chartView.completionCallback = {
+                    self.play()
+                }
+                
+                self.play()
             }
             
-            playMinggu()
             
             lineViewMinggu.alpha = 1
             lineViewBulan.alpha = 0
@@ -184,15 +194,16 @@ class HomeViewController: UIViewController {
             bulanButton.addSubview(lineViewBulan)
             
             self.chartView.isHidden = true
-            self.chartViewMinggu.isHidden = true
             self.chartViewBulan.isHidden = false
             self.chartViewTahun.isHidden = true
 
-            chartViewBulan.completionCallback = {
+            DispatchQueue.main.async {
+                self.chartViewBulan.completionCallback = {
+                    self.playBulan()
+                }
+                
                 self.playBulan()
             }
-            
-            playBulan()
             
             lineViewBulan.alpha = 1
             lineViewMinggu.alpha = 0
@@ -202,28 +213,32 @@ class HomeViewController: UIViewController {
             tahunButton.addSubview(lineViewTahun)
             
             self.chartView.isHidden = true
-            self.chartViewMinggu.isHidden = true
             self.chartViewBulan.isHidden = true
             self.chartViewTahun.isHidden = false
             
-            chartViewTahun.completionCallback = {
+            DispatchQueue.main.async {
+                self.chartViewTahun.completionCallback = {
+                    self.playTahun()
+                }
+                
                 self.playTahun()
             }
-            
-            playTahun()
             
             lineViewTahun.alpha = 1
             lineViewMinggu.alpha = 0
             lineViewBulan.alpha = 0
         default:
-            chartViewBulan.isHidden = true
-            chartViewTahun.isHidden = true
-            chartView.isHidden = false
-            chartView.completionCallback = {
+            self.chartViewBulan.isHidden = true
+            self.chartViewTahun.isHidden = true
+            self.chartView.isHidden = false
+            
+            DispatchQueue.main.async {
+                self.chartView.completionCallback = {
+                    self.play()
+                }
+                
                 self.play()
             }
-            
-            play()
             
             lineViewMinggu.alpha = 1
             lineViewBulan.alpha = 0
@@ -234,7 +249,13 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if setoranData.data.count == 0 {
+            self.setoranTableView.setEmptyMessage("Upss!! Kamu belum pernah menyetorkan sampah")
+        } else {
+            self.setoranTableView.restore()
+        }
+        
+        return setoranData.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -283,5 +304,25 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 controller?.arrTips = self.arrSelectRow
             }
         }
+    }
+}
+
+extension UITableView {
+    func setEmptyMessage(_ message: String) {
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+            messageLabel.text = message
+            messageLabel.textColor = UIColor(red: 196, green: 196, blue: 196, alpha: 1)
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
+            messageLabel.font = UIFont(name: "SF UI Display", size: 14)
+            messageLabel.sizeToFit()
+
+            self.backgroundView = messageLabel
+            self.separatorStyle = .none
+        }
+    
+    func restore() {
+            self.backgroundView = nil
+            self.separatorStyle = .none
     }
 }

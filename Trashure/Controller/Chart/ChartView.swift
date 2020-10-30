@@ -29,10 +29,10 @@ open class ChartView: MacawView {
     
     private let captionsY = ["20Kg", "15Kg", "10Kg", "5Kg", "3Kg", "1Kg"]
     
-    private let gradientColor = Color.rgba(r: 255, g: 87, b: 34, a: 1.0)
+    private let color = Color.rgba(r: 255, g: 87, b: 34, a: 1.0)
     
     private func createScene() {
-        let viewCenterX = Double((self.frame.width - 10) / 2)
+        let viewCenterX = Double((self.frame.width) / 2)
         
         let barsWidth = Double((barWidth * barsCount) + (barsSpacing * (barsCount - 1)))
         let barsCenterX = viewCenterX - barsWidth / 2
@@ -50,16 +50,16 @@ open class ChartView: MacawView {
                     rx: 5,
                     ry: 5
                 ),
-                fill: gradientColor
+                fill: color
             )
             mainGroup.contents.append([barShape].group())
         }
         
-        mainGroup.place = Transform.move(dx: barsCenterX, dy: 90)
+        mainGroup.place = Transform.move(dx: barsCenterX + 10, dy: 90)
         
         captionsGroup = Group()
         captionsGroup.place = Transform.move(
-            dx: barsCenterX,
+            dx: barsCenterX + 10,
             dy: 100 + Double(barHeight)
         )
         for barIndex in 0...barsCount - 1 {
@@ -92,7 +92,7 @@ open class ChartView: MacawView {
             milesCaptionGroup.contents.append(text)
         }
         
-        let chartGroup = [milesCaptionGroup].group(place: Transform.move(dx: barsCenterX - 60, dy: 12))
+        let chartGroup = [milesCaptionGroup].group(place: Transform.move(dx: barsCenterX - 60, dy: 17))
         self.node = [mainGroup, captionsGroup, chartGroup].group()
     }
     
@@ -133,7 +133,7 @@ open class ChartView: MacawView {
                             rx: 5,
                             ry: 5
                         ),
-                        fill: self.gradientColor
+                        fill: self.color
                     )
                     return [barShape]
                 }, during: 0.2, delay: 0).easing(Easing.easeInOut)

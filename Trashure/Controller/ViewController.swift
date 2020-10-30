@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import GoogleSignIn
+import FirebaseAuth
+import Firebase
+import FBSDKLoginKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, GIDSignInDelegate {
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var googleButton: GIDSignInButton!
     @IBOutlet weak var fbButton: UIButton!
     
     private let button = UIButton(type: .custom)
@@ -22,6 +26,61 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
+        
+        if Auth.auth().currentUser != nil {
+            performSegue(withIdentifier: "toHome", sender: self)
+        }
+        
+    }
+    
+    //MARK: -Authentikasi Google dan Facebook
+    //MARK: Google
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            let userId = user.userID
+            let idToken = user.authentication.idToken
+            let fullName = user.profile.name
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            let image = user.profile.imageURL(withDimension: 400)
+            print("\(userId!)")
+            print("\(idToken!)")
+            print("\(fullName ?? "no name")")
+            print("\(givenName ?? "nil")")
+            print("\(familyName ?? "nil")")
+            print("\(email ?? "nil")")
+            print("\(String(describing: image ?? nil))")
+            
+            performSegue(withIdentifier: "toHome", sender: self)
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { (auth, error) in
+            if let error = error {
+                print("Firebase error")
+                print(error)
+                return
+            }
+            print("User signed in with firebase")
+        }
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("user has disconect")
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url)
     }
     
     //MARK: - Customize UI
@@ -75,7 +134,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.backgroundColor = .clear
     }
-
+    
     //MARK: - Actionable
     @IBAction func openPass(_ sender: Any) {
         if passField.isSecureTextEntry {
@@ -88,7 +147,39 @@ class ViewController: UIViewController {
     }
     
     @IBAction func masukPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "toHome", sender: self)
+        
+    }
+    
+    @IBAction func googlePressed(_ sender: UIButton) {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+    
+    @IBAction func fbPressed(_ sender: Any) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = AccessToken.current else {
+                print("failed to get token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { (result, error) in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                    return
+                } else {
+                    print(result?.user.email)
+                    self.performSegue(withIdentifier: "toHome", sender: self)
+                }
+            }
+        }
     }
     
     @IBAction func daftarPressed(_ sender: UIButton) {
