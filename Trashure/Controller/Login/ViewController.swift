@@ -11,6 +11,8 @@ import FirebaseAuth
 import Firebase
 import FBSDKLoginKit
 
+
+
 class ViewController: UIViewController, GIDSignInDelegate {
     
     @IBOutlet weak var emailField: UITextField!
@@ -18,6 +20,8 @@ class ViewController: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var googleButton: GIDSignInButton!
     @IBOutlet weak var fbButton: UIButton!
+
+    let defaults = UserDefaults.standard
     
     private let button = UIButton(type: .custom)
     
@@ -31,37 +35,43 @@ class ViewController: UIViewController, GIDSignInDelegate {
         GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: "toHome", sender: self)
         }
-        
     }
     
     //MARK: -Authentikasi Google dan Facebook
     //MARK: Google
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser?, withError error: Error!) {
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
-            let userId = user.userID
-            let idToken = user.authentication.idToken
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
-            let image = user.profile.imageURL(withDimension: 400)
-            print("\(userId!)")
-            print("\(idToken!)")
-            print("\(fullName ?? "no name")")
-            print("\(givenName ?? "nil")")
-            print("\(familyName ?? "nil")")
-            print("\(email ?? "nil")")
-            print("\(String(describing: image ?? nil))")
+            let userId = user?.userID
+            let idToken = user?.authentication.idToken
+            let fullName = user?.profile.name
+            let givenName = user?.profile.givenName
+            let familyName = user?.profile.familyName
+            let email = user?.profile.email
+            let image = user?.profile.imageURL(withDimension: 100)
+            
+            defaults.set(fullName, forKey: "namaLengkap")
+            defaults.set(email, forKey: "email")
+            defaults.set(image?.absoluteString, forKey: "url")
+            defaults.set("", forKey: "phone")
+            defaults.set("01 - Desember - 2020", forKey: "birthDate")
+    
+            defaults.synchronize()
             
             performSegue(withIdentifier: "toHome", sender: self)
         }
         
-        guard let authentication = user.authentication else { return }
+        guard let authentication = user?.authentication else {
+            return
+        }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
         Auth.auth().signIn(with: credential) { (auth, error) in
@@ -72,6 +82,8 @@ class ViewController: UIViewController, GIDSignInDelegate {
             }
             print("User signed in with firebase")
         }
+        
+        
         
     }
     
@@ -175,7 +187,15 @@ class ViewController: UIViewController, GIDSignInDelegate {
                     print("error: \(error.localizedDescription)")
                     return
                 } else {
-                    print(result?.user.email)
+                    print("\(String(describing: result?.user.email))")
+                    print("\(String(describing: result?.user.phoneNumber))")
+                    self.defaults.set(result?.user.displayName, forKey: "namaLengkap")
+                    self.defaults.set(result?.user.email, forKey: "email")
+                    self.defaults.set(result?.user.photoURL?.absoluteString, forKey: "url")
+                    self.defaults.set(result?.user.phoneNumber, forKey: "phone")
+                    self.defaults.set("01 - Desember - 2020", forKey: "birthDate")
+                    self.defaults.synchronize()
+                    
                     self.performSegue(withIdentifier: "toHome", sender: self)
                 }
             }

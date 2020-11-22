@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import Charts
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var indikatorSaldoView: UIView!
     @IBOutlet weak var viewDompet: UIView!
@@ -15,31 +16,35 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var connectedLabel: UILabel!
     @IBOutlet weak var setoranTableView: UITableView!
     @IBOutlet weak var statView: UIView!
-    @IBOutlet weak var chartView: ChartView!
-    @IBOutlet weak var chartViewBulan: ChartViewBulan!
-    @IBOutlet weak var chartViewTahun: ChartViewTahun!
+    @IBOutlet weak var chartView: UIView!
     @IBOutlet weak var tipsCollectionView: UICollectionView!
     @IBOutlet weak var mingguButton: UIButton!
     @IBOutlet weak var bulanButton: UIButton!
     @IBOutlet weak var tahunButton: UIButton!
     
+    lazy var barChart = BarChartView()
+    
     let dataTips = TipsData()
     let setoranData = SetoranData()
     var arrSelectRow = TipsModel(tipsImage: nil, title: "", isi: "", date: "")
+    
+    let date = Date()
+    var trashbagM = [Double]()
+    var trashbagB = [Double]()
+    var trashbagT = [Double]()
+    
+    var totalM = 0.0
+    var totalB = 0.0
     
     let thickness: CGFloat = 2.7
     var lineViewMinggu = UIView()
     var lineViewBulan = UIView()
     var lineViewTahun = UIView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
-        
-        chartViewBulan.isHidden = true
-        chartViewTahun.isHidden = true
-        chartView.isHidden = false
         
         setoranTableView.delegate = self
         setoranTableView.dataSource = self
@@ -48,34 +53,15 @@ class HomeViewController: UIViewController {
         tipsCollectionView.delegate = self
         tipsCollectionView.dataSource = self
         tipsCollectionView.register(UINib(nibName: "TipsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "tipsCell")
+        
+        barChart.delegate = self
     }
     
-    private func play() {
-        self.perform(#selector(animateViews), with: .none)
-    }
-    
-    @objc open func animateViews() {
-        chartView.play()
-    }
-    
-    private func playBulan() {
-        self.perform(#selector(animateViewsBulan), with: .none)
-    }
-    
-    @objc open func animateViewsBulan() {
-        chartViewBulan.play()
-    }
-    
-    private func playTahun() {
-        self.perform(#selector(animateViewsTahun), with: .none)
-    }
-    
-    @objc open func animateViewsTahun() {
-        chartViewTahun.play()
-    }
     
     //MARK: - Customize UI
     private func setupUI() {
+        let day = ["1", "2", "3", "4"]
+        trashbagM = [8.0, 2.0, 8.0, 10.0]
         
         self.tipsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
@@ -109,18 +95,11 @@ class HomeViewController: UIViewController {
         viewDompet.layer.cornerRadius = 5
         viewDompet.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
+        //MARK: navigation custom
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.backgroundColor = .white
-        
-        tabBarController?.tabBar.backgroundImage = UIImage()
-        tabBarController?.tabBar.shadowImage = UIImage()
-        tabBarController?.tabBar.backgroundColor = .white
-        tabBarController?.tabBar.layer.shadowColor = UIColor.black.cgColor
-        tabBarController?.tabBar.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
-        tabBarController?.tabBar.layer.shadowOpacity = 0.1
-        tabBarController?.tabBar.layer.shadowRadius = 12
-        
+      
         let label = UILabel()
         label.textColor = UIColor(named: "DarkBlue")
         label.text = "Trashure"
@@ -133,6 +112,16 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 4.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 3
         
+        //MARK: Tab Bar Custom
+        tabBarController?.tabBar.backgroundImage = UIImage()
+        tabBarController?.tabBar.shadowImage = UIImage()
+        tabBarController?.tabBar.backgroundColor = .white
+        tabBarController?.tabBar.layer.shadowColor = UIColor.black.cgColor
+        tabBarController?.tabBar.layer.shadowOffset = CGSize(width: 0.0, height: -4.0)
+        tabBarController?.tabBar.layer.shadowOpacity = 0.1
+        tabBarController?.tabBar.layer.shadowRadius = 12
+        
+        //MARK: bottom line Chart selection
         lineViewMinggu = UIView(frame: CGRect(x: 0, y: mingguButton.frame.size.height + thickness, width: mingguButton.frame.size.width, height: 3))
         
         lineViewBulan = UIView(frame: CGRect(x: -6, y: bulanButton.frame.size.height + thickness, width: mingguButton.frame.size.width, height: 3))
@@ -156,14 +145,62 @@ class HomeViewController: UIViewController {
         lineViewTahun.clipsToBounds = true
         lineViewTahun.layer.cornerRadius = 1
         
+        setupCharts(xVal: day, yVal: trashbagM, maxVal: 20.0, width: 0.15)
         
-        chartView.completionCallback = {
-            self.play()
+        var i = 0
+        while i < trashbagM.count {
+            let curr = trashbagM[i]
+            totalM += curr
+            i += 1
         }
-        
-        play()
+        print("total: \(totalM)")
     }
     
+    //MARK: Bar Charts
+    func setupCharts(xVal: [String], yVal: [Double], maxVal: Double, width: Double) {
+        barChart.frame = CGRect(x: 0, y: 0, width: self.chartView.frame.width, height: self.chartView.frame.height)
+        
+        let rightAxis = barChart.rightAxis
+        rightAxis.axisMinimum = 0
+        
+        let leftAxis = barChart.leftAxis
+        leftAxis.axisMinimum = 0
+        
+        barChart.chartDescription?.enabled = false
+        
+        barChart.drawBordersEnabled = false
+        barChart.legend.form = .none
+        
+        barChart.xAxis.drawGridLinesEnabled = false
+        
+        barChart.xAxis.drawAxisLineEnabled = false
+        barChart.leftAxis.drawAxisLineEnabled = false
+        barChart.leftAxis.drawGridLinesEnabled = false
+        barChart.rightAxis.enabled = false
+        barChart.legend.enabled = false
+        barChart.doubleTapToZoomEnabled = false
+        
+        barChart.xAxis.labelTextColor = UIColor(named: "DarkBlue") ?? .black
+        barChart.leftAxis.labelTextColor = UIColor(named: "DarkBlue") ?? .black
+        
+        barChart.xAxis.labelPosition = .bottom
+        
+        barChart.translatesAutoresizingMaskIntoConstraints = false
+        chartView.addSubview(barChart)
+        barChart.topAnchor.constraint(equalTo: chartView.topAnchor).isActive = true
+        barChart.bottomAnchor.constraint(equalTo: chartView.bottomAnchor).isActive = true
+        barChart.leftAnchor.constraint(equalTo: chartView.leftAnchor).isActive = true
+        barChart.rightAnchor.constraint(equalTo: chartView.rightAnchor).isActive = true
+        barChart.heightAnchor.constraint(equalTo: chartView.heightAnchor).isActive = true
+        
+        barChart.leftAxis.axisMaximum = maxVal
+        
+        barChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        
+        barChart.setBarChartData(xValues: xVal, yValues: yVal, barW: width)
+    }
+
+//MARK: -Action
     @IBAction func lihatSemuaPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "toSetoran", sender: self)
     }
@@ -173,18 +210,10 @@ class HomeViewController: UIViewController {
         
         switch sender {
         case mingguButton:
-            self.chartViewBulan.isHidden = true
-            self.chartViewTahun.isHidden = true
-            self.chartView.isHidden = false
-            
-            DispatchQueue.main.async {
-                self.chartView.completionCallback = {
-                    self.play()
-                }
-                
-                self.play()
-            }
-            
+            let day = ["1", "2", "3", "4"]
+            trashbagM = [8.0, 2.0, 8.0, 10.0]
+        
+            setupCharts(xVal: day, yVal: trashbagM, maxVal: 20.0, width: 0.15)
             
             lineViewMinggu.alpha = 1
             lineViewBulan.alpha = 0
@@ -192,18 +221,20 @@ class HomeViewController: UIViewController {
         case bulanButton:
             
             bulanButton.addSubview(lineViewBulan)
+        
+            let month = date.get(.month)
+            var months = [String]()
+            trashbagB = [Double]()
             
-            self.chartView.isHidden = true
-            self.chartViewBulan.isHidden = false
-            self.chartViewTahun.isHidden = true
-
-            DispatchQueue.main.async {
-                self.chartViewBulan.completionCallback = {
-                    self.playBulan()
-                }
-                
-                self.playBulan()
+            if month < 6 && month > 1{
+                months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+                trashbagB = [10.0, 18.0, 8.0, 30.0, 10.0, 18.0]
+            } else {
+                months = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+                trashbagB = [8.0, 30.0, 23.0, 48.0, totalM, 0.0]
             }
+            
+            setupCharts(xVal: months, yVal: trashbagB, maxVal: 50.0, width: 0.2)
             
             lineViewBulan.alpha = 1
             lineViewMinggu.alpha = 0
@@ -211,34 +242,29 @@ class HomeViewController: UIViewController {
         case tahunButton:
             
             tahunButton.addSubview(lineViewTahun)
+        
+            let year = date.get(.year)
+            var years = [String]()
+            trashbagT = [Double]()
             
-            self.chartView.isHidden = true
-            self.chartViewBulan.isHidden = true
-            self.chartViewTahun.isHidden = false
-            
-            DispatchQueue.main.async {
-                self.chartViewTahun.completionCallback = {
-                    self.playTahun()
-                }
-                
-                self.playTahun()
+            if year < 2023 && year > 2020{
+                years = ["2020", "2021", "2022", "2023"]
+                trashbagT = [10.0, 0.0, 0.0, 0.0]
+            } else {
+                years = ["2024", "2025", "2026", "2027"]
+                trashbagT = [0.0, 0.0, 0.0, 0.0]
             }
+            
+            setupCharts(xVal: years, yVal: trashbagT, maxVal: 50.0, width: 0.15)
             
             lineViewTahun.alpha = 1
             lineViewMinggu.alpha = 0
             lineViewBulan.alpha = 0
         default:
-            self.chartViewBulan.isHidden = true
-            self.chartViewTahun.isHidden = true
-            self.chartView.isHidden = false
+            let day = ["1", "2", "3", "4"]
+            trashbagM = [5.0, 11.0, 3.0, 13.0]
             
-            DispatchQueue.main.async {
-                self.chartView.completionCallback = {
-                    self.play()
-                }
-                
-                self.play()
-            }
+            setupCharts(xVal: day, yVal: trashbagM, maxVal: 20.0, width: 0.15)
             
             lineViewMinggu.alpha = 1
             lineViewBulan.alpha = 0
@@ -307,6 +333,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+//MARK: - Extension
 extension UITableView {
     func setEmptyMessage(_ message: String) {
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
@@ -324,5 +351,59 @@ extension UITableView {
     func restore() {
             self.backgroundView = nil
             self.separatorStyle = .none
+    }
+}
+
+extension BarChartView {
+
+    private class BarChartFormatter: NSObject, IAxisValueFormatter {
+        
+        var labels: [String] = []
+        
+        func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+            return labels[Int(value)]
+        }
+        
+        init(labels: [String]) {
+            super.init()
+            self.labels = labels
+        }
+    }
+    
+    func setBarChartData(xValues: [String], yValues: [Double], barW: Double) {
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<yValues.count {
+            let dataEntry = BarChartDataEntry(x: Double(i), y: yValues[i])
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(entries: dataEntries)
+        let chartData = BarChartData(dataSet: chartDataSet)
+        
+        chartDataSet.setColor(UIColor(named: "orange") ?? .orange)
+        chartDataSet.highlightEnabled = false
+        chartDataSet.valueTextColor = UIColor(named: "DarkBlue") ?? .black
+        
+        let chartFormatter = BarChartFormatter(labels: xValues)
+        let xAxis = XAxis()
+        xAxis.valueFormatter = chartFormatter
+        chartData.barWidth = barW
+        chartData.setValueTextColor(UIColor(named: "DarkBlue") ?? .black)
+        self.xAxis.valueFormatter = xAxis.valueFormatter
+        self.xAxis.setLabelCount(xValues.count, force: false)
+        
+        self.data = chartData
+    }
+}
+
+extension Date {
+    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
+        return calendar.dateComponents(Set(components), from: self)
+    }
+
+    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
+        return calendar.component(component, from: self)
     }
 }

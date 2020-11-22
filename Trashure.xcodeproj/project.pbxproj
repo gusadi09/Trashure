@@ -10,6 +10,8 @@
 		C80BDEFBB5A400765FD3492D /* Pods_Trashure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9DCBF0F5D34A94824696B85 /* Pods_Trashure.framework */; };
 		EC4AE7BA254BD883004554B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC4AE7B9254BD883004554B8 /* GoogleService-Info.plist */; };
 		EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4C5F27254BEF0700272CDC /* AkunViewController.swift */; };
+		EC7DFB3A256A0C2400B6306F /* EditAkunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7DFB39256A0C2400B6306F /* EditAkunViewController.swift */; };
+		ECBBE38425643B4100038FF5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBE38325643B4100038FF5 /* HomeViewController.swift */; };
 		ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CAD253ACB000034D711 /* AppDelegate.swift */; };
 		ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CAF253ACB000034D711 /* SceneDelegate.swift */; };
 		ECC18CB2253ACB000034D711 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CB1253ACB000034D711 /* ViewController.swift */; };
@@ -32,9 +34,6 @@
 		ECD09C632546D87800C7BD05 /* SetoranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C622546D87800C7BD05 /* SetoranViewController.swift */; };
 		ECD09C672546E3F400C7BD05 /* SetoranModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C662546E3F400C7BD05 /* SetoranModel.swift */; };
 		ECD09C6A2546E40500C7BD05 /* SetoranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C692546E40500C7BD05 /* SetoranData.swift */; };
-		ECD09C722547C03E00C7BD05 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C712547C03E00C7BD05 /* ChartView.swift */; };
-		ECD09C752547D28E00C7BD05 /* ChartViewBulan.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C742547D28E00C7BD05 /* ChartViewBulan.swift */; };
-		ECD09C782547D29D00C7BD05 /* ChartViewTahun.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C772547D29D00C7BD05 /* ChartViewTahun.swift */; };
 		ECEFE33A253B6D5800FA1139 /* sf-ui-display-light-58646b33e0551.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE332253B6D5600FA1139 /* sf-ui-display-light-58646b33e0551.otf */; };
 		ECEFE33B253B6D5800FA1139 /* sf-ui-display-heavy-586470160b9e5.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE333253B6D5700FA1139 /* sf-ui-display-heavy-586470160b9e5.otf */; };
 		ECEFE33D253B6D5800FA1139 /* sf-ui-display-medium-58646be638f96.otf in Resources */ = {isa = PBXBuildFile; fileRef = ECEFE335253B6D5700FA1139 /* sf-ui-display-medium-58646be638f96.otf */; };
@@ -44,7 +43,6 @@
 		ECEFE354253C611A00FA1139 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE353253C611A00FA1139 /* DesignableTextField.swift */; };
 		ECEFE358253E92E300FA1139 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE357253E92E300FA1139 /* RegisterViewController.swift */; };
 		ECEFE35D253FE1B400FA1139 /* DetailTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE35C253FE1B400FA1139 /* DetailTipsViewController.swift */; };
-		ECEFE360253FE22300FA1139 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE35F253FE22300FA1139 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +51,8 @@
 		A9DCBF0F5D34A94824696B85 /* Pods_Trashure.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trashure.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4AE7B9254BD883004554B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC4C5F27254BEF0700272CDC /* AkunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkunViewController.swift; sourceTree = "<group>"; };
+		EC7DFB39256A0C2400B6306F /* EditAkunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAkunViewController.swift; sourceTree = "<group>"; };
+		ECBBE38325643B4100038FF5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ECC18CAA253ACB000034D711 /* Trashure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trashure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC18CAD253ACB000034D711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECC18CAF253ACB000034D711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,9 +77,6 @@
 		ECD09C622546D87800C7BD05 /* SetoranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetoranViewController.swift; sourceTree = "<group>"; };
 		ECD09C662546E3F400C7BD05 /* SetoranModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetoranModel.swift; sourceTree = "<group>"; };
 		ECD09C692546E40500C7BD05 /* SetoranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetoranData.swift; sourceTree = "<group>"; };
-		ECD09C712547C03E00C7BD05 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		ECD09C742547D28E00C7BD05 /* ChartViewBulan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewBulan.swift; sourceTree = "<group>"; };
-		ECD09C772547D29D00C7BD05 /* ChartViewTahun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewTahun.swift; sourceTree = "<group>"; };
 		ECEFE332253B6D5600FA1139 /* sf-ui-display-light-58646b33e0551.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-light-58646b33e0551.otf"; sourceTree = "<group>"; };
 		ECEFE333253B6D5700FA1139 /* sf-ui-display-heavy-586470160b9e5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-heavy-586470160b9e5.otf"; sourceTree = "<group>"; };
 		ECEFE335253B6D5700FA1139 /* sf-ui-display-medium-58646be638f96.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-ui-display-medium-58646be638f96.otf"; sourceTree = "<group>"; };
@@ -89,7 +86,6 @@
 		ECEFE353253C611A00FA1139 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		ECEFE357253E92E300FA1139 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		ECEFE35C253FE1B400FA1139 /* DetailTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTipsViewController.swift; sourceTree = "<group>"; };
-		ECEFE35F253FE22300FA1139 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +115,63 @@
 				A9DCBF0F5D34A94824696B85 /* Pods_Trashure.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ECBBE3702563937C00038FF5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				ECC18CB1253ACB000034D711 /* ViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		ECBBE3712563939300038FF5 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				ECEFE357253E92E300FA1139 /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		ECBBE372256393A200038FF5 /* DetailTips */ = {
+			isa = PBXGroup;
+			children = (
+				ECEFE35C253FE1B400FA1139 /* DetailTipsViewController.swift */,
+			);
+			path = DetailTips;
+			sourceTree = "<group>";
+		};
+		ECBBE373256393B400038FF5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ECBBE38325643B4100038FF5 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		ECBBE374256393C600038FF5 /* HargaSampah */ = {
+			isa = PBXGroup;
+			children = (
+				ECD09C452545548000C7BD05 /* HargaViewController.swift */,
+			);
+			path = HargaSampah;
+			sourceTree = "<group>";
+		};
+		ECBBE375256393D200038FF5 /* Setoran */ = {
+			isa = PBXGroup;
+			children = (
+				ECD09C622546D87800C7BD05 /* SetoranViewController.swift */,
+			);
+			path = Setoran;
+			sourceTree = "<group>";
+		};
+		ECBBE376256393E100038FF5 /* Akun */ = {
+			isa = PBXGroup;
+			children = (
+				EC4C5F27254BEF0700272CDC /* AkunViewController.swift */,
+				EC7DFB39256A0C2400B6306F /* EditAkunViewController.swift */,
+			);
+			path = Akun;
 			sourceTree = "<group>";
 		};
 		ECC18CA1253ACB000034D711 = {
@@ -178,14 +231,13 @@
 		ECC18CCB253AD93B0034D711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ECD09C702547C02700C7BD05 /* Chart */,
-				ECC18CB1253ACB000034D711 /* ViewController.swift */,
-				ECEFE357253E92E300FA1139 /* RegisterViewController.swift */,
-				ECEFE35C253FE1B400FA1139 /* DetailTipsViewController.swift */,
-				ECEFE35F253FE22300FA1139 /* HomeViewController.swift */,
-				ECD09C452545548000C7BD05 /* HargaViewController.swift */,
-				ECD09C622546D87800C7BD05 /* SetoranViewController.swift */,
-				EC4C5F27254BEF0700272CDC /* AkunViewController.swift */,
+				ECBBE3702563937C00038FF5 /* Login */,
+				ECBBE3712563939300038FF5 /* Register */,
+				ECBBE372256393A200038FF5 /* DetailTips */,
+				ECBBE373256393B400038FF5 /* Home */,
+				ECBBE374256393C600038FF5 /* HargaSampah */,
+				ECBBE375256393D200038FF5 /* Setoran */,
+				ECBBE376256393E100038FF5 /* Akun */,
 				ECD09C432545535E00C7BD05 /* CellController */,
 			);
 			path = Controller;
@@ -236,16 +288,6 @@
 				ECD09C562545E8D700C7BD05 /* TipsCollectionViewCell.swift */,
 			);
 			path = CellController;
-			sourceTree = "<group>";
-		};
-		ECD09C702547C02700C7BD05 /* Chart */ = {
-			isa = PBXGroup;
-			children = (
-				ECD09C712547C03E00C7BD05 /* ChartView.swift */,
-				ECD09C742547D28E00C7BD05 /* ChartViewBulan.swift */,
-				ECD09C772547D29D00C7BD05 /* ChartViewTahun.swift */,
-			);
-			path = Chart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,26 +433,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECC18CB2253ACB000034D711 /* ViewController.swift in Sources */,
+				EC7DFB3A256A0C2400B6306F /* EditAkunViewController.swift in Sources */,
 				ECD09C582545E8D800C7BD05 /* TipsCollectionViewCell.swift in Sources */,
 				ECEFE354253C611A00FA1139 /* DesignableTextField.swift in Sources */,
 				ECD09C4C254555BA00C7BD05 /* JenisSampahData.swift in Sources */,
 				ECEFE358253E92E300FA1139 /* RegisterViewController.swift in Sources */,
 				ECEFE35D253FE1B400FA1139 /* DetailTipsViewController.swift in Sources */,
 				ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */,
+				ECBBE38425643B4100038FF5 /* HomeViewController.swift in Sources */,
 				ECD09C632546D87800C7BD05 /* SetoranViewController.swift in Sources */,
 				ECD09C492545556000C7BD05 /* JenisSampahModel.swift in Sources */,
 				ECD09C3D2545512300C7BD05 /* HargaSampahCell.swift in Sources */,
-				ECD09C782547D29D00C7BD05 /* ChartViewTahun.swift in Sources */,
 				ECD09C6A2546E40500C7BD05 /* SetoranData.swift in Sources */,
-				ECEFE360253FE22300FA1139 /* HomeViewController.swift in Sources */,
 				ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */,
 				ECD09C672546E3F400C7BD05 /* SetoranModel.swift in Sources */,
 				ECD09C5D254667BD00C7BD05 /* TipsModel.swift in Sources */,
 				ECD09C462545548000C7BD05 /* HargaViewController.swift in Sources */,
 				EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */,
 				ECC18CB8253ACB000034D711 /* Trashure.xcdatamodeld in Sources */,
-				ECD09C722547C03E00C7BD05 /* ChartView.swift in Sources */,
-				ECD09C752547D28E00C7BD05 /* ChartViewBulan.swift in Sources */,
 				ECD09C522545CE7100C7BD05 /* SetoranCell.swift in Sources */,
 				ECD09C60254667C600C7BD05 /* TipsData.swift in Sources */,
 				ECEFE34B253BFF5900FA1139 /* Checkbox.swift in Sources */,
