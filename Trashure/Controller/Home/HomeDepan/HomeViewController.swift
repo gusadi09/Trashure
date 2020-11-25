@@ -271,6 +271,15 @@ class HomeViewController: UIViewController, ChartViewDelegate {
             lineViewTahun.alpha = 0
         }
     }
+    
+    @IBAction func pengaturanPressed(_ sender: UIBarButtonItem) {
+        if sender.title == "pengaturan" {
+            performSegue(withIdentifier: "toSetting", sender: self)
+        } else {
+            performSegue(withIdentifier: "toNotification", sender: self)
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {

@@ -43,6 +43,16 @@
 		ECEFE354253C611A00FA1139 /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE353253C611A00FA1139 /* DesignableTextField.swift */; };
 		ECEFE358253E92E300FA1139 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE357253E92E300FA1139 /* RegisterViewController.swift */; };
 		ECEFE35D253FE1B400FA1139 /* DetailTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFE35C253FE1B400FA1139 /* DetailTipsViewController.swift */; };
+		ECF1749B256CC09500A0EF98 /* PengaturanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF1749A256CC09500A0EF98 /* PengaturanViewController.swift */; };
+		ECF1749F256D2AF400A0EF98 /* NotifikasiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF1749E256D2AF400A0EF98 /* NotifikasiViewController.swift */; };
+		ECF174A4256D2B8200A0EF98 /* DetailNotifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174A3256D2B8200A0EF98 /* DetailNotifViewController.swift */; };
+		ECF174A9256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174A7256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift */; };
+		ECF174AA256D2EDD00A0EF98 /* NotifikasiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECF174A8256D2EDD00A0EF98 /* NotifikasiTableViewCell.xib */; };
+		ECF174AE256D4E9A00A0EF98 /* NotifikasiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174AD256D4E9A00A0EF98 /* NotifikasiModel.swift */; };
+		ECF174B1256D4EA700A0EF98 /* NotifikasiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174B0256D4EA700A0EF98 /* NotifikasiData.swift */; };
+		ECF174B4256D5B1B00A0EF98 /* NotifikasiDataLain.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174B3256D5B1B00A0EF98 /* NotifikasiDataLain.swift */; };
+		ECF174B9256E9DB900A0EF98 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174B8256E9DB900A0EF98 /* ScanViewController.swift */; };
+		ECF174BC256EA6E800A0EF98 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174BB256EA6E800A0EF98 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +96,16 @@
 		ECEFE353253C611A00FA1139 /* DesignableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		ECEFE357253E92E300FA1139 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		ECEFE35C253FE1B400FA1139 /* DetailTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTipsViewController.swift; sourceTree = "<group>"; };
+		ECF1749A256CC09500A0EF98 /* PengaturanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PengaturanViewController.swift; sourceTree = "<group>"; };
+		ECF1749E256D2AF400A0EF98 /* NotifikasiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiViewController.swift; sourceTree = "<group>"; };
+		ECF174A3256D2B8200A0EF98 /* DetailNotifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNotifViewController.swift; sourceTree = "<group>"; };
+		ECF174A7256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiTableViewCell.swift; sourceTree = "<group>"; };
+		ECF174A8256D2EDD00A0EF98 /* NotifikasiTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotifikasiTableViewCell.xib; sourceTree = "<group>"; };
+		ECF174AD256D4E9A00A0EF98 /* NotifikasiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiModel.swift; sourceTree = "<group>"; };
+		ECF174B0256D4EA700A0EF98 /* NotifikasiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiData.swift; sourceTree = "<group>"; };
+		ECF174B3256D5B1B00A0EF98 /* NotifikasiDataLain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiDataLain.swift; sourceTree = "<group>"; };
+		ECF174B8256E9DB900A0EF98 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		ECF174BB256EA6E800A0EF98 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +164,12 @@
 		ECBBE373256393B400038FF5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				ECBBE38325643B4100038FF5 /* HomeViewController.swift */,
+				ECF17498256CC01A00A0EF98 /* HomeDepan */,
+				ECBBE372256393A200038FF5 /* DetailTips */,
+				ECBBE375256393D200038FF5 /* Setoran */,
+				ECF17499256CC07400A0EF98 /* Pengaturan */,
+				ECF1749D256D2ADC00A0EF98 /* Notifikasi */,
+				ECF174A2256D2B5F00A0EF98 /* DetailNotifikasi */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -231,12 +256,11 @@
 		ECC18CCB253AD93B0034D711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ECF174B7256E9D8100A0EF98 /* Scan */,
 				ECBBE3702563937C00038FF5 /* Login */,
 				ECBBE3712563939300038FF5 /* Register */,
-				ECBBE372256393A200038FF5 /* DetailTips */,
 				ECBBE373256393B400038FF5 /* Home */,
 				ECBBE374256393C600038FF5 /* HargaSampah */,
-				ECBBE375256393D200038FF5 /* Setoran */,
 				ECBBE376256393E100038FF5 /* Akun */,
 				ECD09C432545535E00C7BD05 /* CellController */,
 			);
@@ -253,6 +277,9 @@
 				ECD09C5F254667C600C7BD05 /* TipsData.swift */,
 				ECD09C662546E3F400C7BD05 /* SetoranModel.swift */,
 				ECD09C692546E40500C7BD05 /* SetoranData.swift */,
+				ECF174AD256D4E9A00A0EF98 /* NotifikasiModel.swift */,
+				ECF174B3256D5B1B00A0EF98 /* NotifikasiDataLain.swift */,
+				ECF174B0256D4EA700A0EF98 /* NotifikasiData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,6 +300,7 @@
 		ECD09C412545512D00C7BD05 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				ECF174A8256D2EDD00A0EF98 /* NotifikasiTableViewCell.xib */,
 				ECD09C3C2545512300C7BD05 /* HargaSampahCell.xib */,
 				ECD09C512545CE7100C7BD05 /* SetoranCell.xib */,
 				ECD09C572545E8D700C7BD05 /* TipsCollectionViewCell.xib */,
@@ -286,8 +314,50 @@
 				ECD09C3B2545512300C7BD05 /* HargaSampahCell.swift */,
 				ECD09C502545CE7100C7BD05 /* SetoranCell.swift */,
 				ECD09C562545E8D700C7BD05 /* TipsCollectionViewCell.swift */,
+				ECF174A7256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift */,
 			);
 			path = CellController;
+			sourceTree = "<group>";
+		};
+		ECF17498256CC01A00A0EF98 /* HomeDepan */ = {
+			isa = PBXGroup;
+			children = (
+				ECBBE38325643B4100038FF5 /* HomeViewController.swift */,
+			);
+			path = HomeDepan;
+			sourceTree = "<group>";
+		};
+		ECF17499256CC07400A0EF98 /* Pengaturan */ = {
+			isa = PBXGroup;
+			children = (
+				ECF1749A256CC09500A0EF98 /* PengaturanViewController.swift */,
+			);
+			path = Pengaturan;
+			sourceTree = "<group>";
+		};
+		ECF1749D256D2ADC00A0EF98 /* Notifikasi */ = {
+			isa = PBXGroup;
+			children = (
+				ECF1749E256D2AF400A0EF98 /* NotifikasiViewController.swift */,
+			);
+			path = Notifikasi;
+			sourceTree = "<group>";
+		};
+		ECF174A2256D2B5F00A0EF98 /* DetailNotifikasi */ = {
+			isa = PBXGroup;
+			children = (
+				ECF174A3256D2B8200A0EF98 /* DetailNotifViewController.swift */,
+			);
+			path = DetailNotifikasi;
+			sourceTree = "<group>";
+		};
+		ECF174B7256E9D8100A0EF98 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				ECF174B8256E9DB900A0EF98 /* ScanViewController.swift */,
+				ECF174BB256EA6E800A0EF98 /* CameraViewController.swift */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +430,7 @@
 				ECEFE33E253B6D5800FA1139 /* sf-ui-display-bold-58646a511e3d9.otf in Resources */,
 				ECC18CB5253ACB000034D711 /* Main.storyboard in Resources */,
 				ECEFE33F253B6D5800FA1139 /* sf-ui-display-semibold-58646eddcae92.otf in Resources */,
+				ECF174AA256D2EDD00A0EF98 /* NotifikasiTableViewCell.xib in Resources */,
 				ECD09C532545CE7100C7BD05 /* SetoranCell.xib in Resources */,
 				ECD09C592545E8D800C7BD05 /* TipsCollectionViewCell.xib in Resources */,
 				ECC18CD0253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF in Resources */,
@@ -441,8 +512,16 @@
 				ECEFE35D253FE1B400FA1139 /* DetailTipsViewController.swift in Sources */,
 				ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */,
 				ECBBE38425643B4100038FF5 /* HomeViewController.swift in Sources */,
+				ECF1749F256D2AF400A0EF98 /* NotifikasiViewController.swift in Sources */,
+				ECF174B1256D4EA700A0EF98 /* NotifikasiData.swift in Sources */,
+				ECF174AE256D4E9A00A0EF98 /* NotifikasiModel.swift in Sources */,
+				ECF174A9256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift in Sources */,
+				ECF1749B256CC09500A0EF98 /* PengaturanViewController.swift in Sources */,
+				ECF174A4256D2B8200A0EF98 /* DetailNotifViewController.swift in Sources */,
+				ECF174BC256EA6E800A0EF98 /* CameraViewController.swift in Sources */,
 				ECD09C632546D87800C7BD05 /* SetoranViewController.swift in Sources */,
 				ECD09C492545556000C7BD05 /* JenisSampahModel.swift in Sources */,
+				ECF174B9256E9DB900A0EF98 /* ScanViewController.swift in Sources */,
 				ECD09C3D2545512300C7BD05 /* HargaSampahCell.swift in Sources */,
 				ECD09C6A2546E40500C7BD05 /* SetoranData.swift in Sources */,
 				ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */,
@@ -452,6 +531,7 @@
 				EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */,
 				ECC18CB8253ACB000034D711 /* Trashure.xcdatamodeld in Sources */,
 				ECD09C522545CE7100C7BD05 /* SetoranCell.swift in Sources */,
+				ECF174B4256D5B1B00A0EF98 /* NotifikasiDataLain.swift in Sources */,
 				ECD09C60254667C600C7BD05 /* TipsData.swift in Sources */,
 				ECEFE34B253BFF5900FA1139 /* Checkbox.swift in Sources */,
 			);
