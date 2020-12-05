@@ -11,6 +11,10 @@
 		EC4AE7BA254BD883004554B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC4AE7B9254BD883004554B8 /* GoogleService-Info.plist */; };
 		EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4C5F27254BEF0700272CDC /* AkunViewController.swift */; };
 		EC7DFB3A256A0C2400B6306F /* EditAkunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7DFB39256A0C2400B6306F /* EditAkunViewController.swift */; };
+		ECAF93512572A5DF00ECDFF9 /* BerhasilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAF93502572A5DE00ECDFF9 /* BerhasilViewController.swift */; };
+		ECAF93552572A6A300ECDFF9 /* ScanBerhasilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAF93542572A6A300ECDFF9 /* ScanBerhasilViewController.swift */; };
+		ECAF935E2576076000ECDFF9 /* BarcodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAF935D2576076000ECDFF9 /* BarcodeModel.swift */; };
+		ECAF9362257607AB00ECDFF9 /* BarcodeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAF9361257607AB00ECDFF9 /* BarcodeData.swift */; };
 		ECBBE38425643B4100038FF5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBBE38325643B4100038FF5 /* HomeViewController.swift */; };
 		ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CAD253ACB000034D711 /* AppDelegate.swift */; };
 		ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC18CAF253ACB000034D711 /* SceneDelegate.swift */; };
@@ -20,6 +24,11 @@
 		ECC18CBA253ACB020034D711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC18CB9253ACB020034D711 /* Assets.xcassets */; };
 		ECC18CBD253ACB020034D711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECC18CBB253ACB020034D711 /* LaunchScreen.storyboard */; };
 		ECC18CD0253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF in Resources */ = {isa = PBXBuildFile; fileRef = ECC18CCF253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF */; };
+		ECCF02BD257B4F7400E1825C /* PenukaranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02BC257B4F7400E1825C /* PenukaranViewController.swift */; };
+		ECCF02C1257B4FC900E1825C /* PenukaranTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02BF257B4FC900E1825C /* PenukaranTableViewCell.swift */; };
+		ECCF02C2257B4FC900E1825C /* PenukaranTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCF02C0257B4FC900E1825C /* PenukaranTableViewCell.xib */; };
+		ECCF02C6257B66DE00E1825C /* PenukaranModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02C5257B66DE00E1825C /* PenukaranModel.swift */; };
+		ECCF02C9257B66EB00E1825C /* PenukaranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02C8257B66EB00E1825C /* PenukaranData.swift */; };
 		ECD09C3D2545512300C7BD05 /* HargaSampahCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C3B2545512300C7BD05 /* HargaSampahCell.swift */; };
 		ECD09C3E2545512300C7BD05 /* HargaSampahCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD09C3C2545512300C7BD05 /* HargaSampahCell.xib */; };
 		ECD09C462545548000C7BD05 /* HargaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C452545548000C7BD05 /* HargaViewController.swift */; };
@@ -30,7 +39,6 @@
 		ECD09C582545E8D800C7BD05 /* TipsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C562545E8D700C7BD05 /* TipsCollectionViewCell.swift */; };
 		ECD09C592545E8D800C7BD05 /* TipsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD09C572545E8D700C7BD05 /* TipsCollectionViewCell.xib */; };
 		ECD09C5D254667BD00C7BD05 /* TipsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C5C254667BC00C7BD05 /* TipsModel.swift */; };
-		ECD09C60254667C600C7BD05 /* TipsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C5F254667C600C7BD05 /* TipsData.swift */; };
 		ECD09C632546D87800C7BD05 /* SetoranViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C622546D87800C7BD05 /* SetoranViewController.swift */; };
 		ECD09C672546E3F400C7BD05 /* SetoranModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C662546E3F400C7BD05 /* SetoranModel.swift */; };
 		ECD09C6A2546E40500C7BD05 /* SetoranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C692546E40500C7BD05 /* SetoranData.swift */; };
@@ -53,6 +61,7 @@
 		ECF174B4256D5B1B00A0EF98 /* NotifikasiDataLain.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174B3256D5B1B00A0EF98 /* NotifikasiDataLain.swift */; };
 		ECF174B9256E9DB900A0EF98 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174B8256E9DB900A0EF98 /* ScanViewController.swift */; };
 		ECF174BC256EA6E800A0EF98 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174BB256EA6E800A0EF98 /* CameraViewController.swift */; };
+		ECF174C6256FC51500A0EF98 /* SlideUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF174C5256FC51500A0EF98 /* SlideUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +71,10 @@
 		EC4AE7B9254BD883004554B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EC4C5F27254BEF0700272CDC /* AkunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkunViewController.swift; sourceTree = "<group>"; };
 		EC7DFB39256A0C2400B6306F /* EditAkunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAkunViewController.swift; sourceTree = "<group>"; };
+		ECAF93502572A5DE00ECDFF9 /* BerhasilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerhasilViewController.swift; sourceTree = "<group>"; };
+		ECAF93542572A6A300ECDFF9 /* ScanBerhasilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanBerhasilViewController.swift; sourceTree = "<group>"; };
+		ECAF935D2576076000ECDFF9 /* BarcodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeModel.swift; sourceTree = "<group>"; };
+		ECAF9361257607AB00ECDFF9 /* BarcodeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeData.swift; sourceTree = "<group>"; };
 		ECBBE38325643B4100038FF5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ECC18CAA253ACB000034D711 /* Trashure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trashure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC18CAD253ACB000034D711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +86,11 @@
 		ECC18CBC253ACB020034D711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECC18CBE253ACB020034D711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECC18CCF253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GOOGLESANS-REGULAR.TTF"; sourceTree = "<group>"; };
+		ECCF02BC257B4F7400E1825C /* PenukaranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenukaranViewController.swift; sourceTree = "<group>"; };
+		ECCF02BF257B4FC900E1825C /* PenukaranTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenukaranTableViewCell.swift; sourceTree = "<group>"; };
+		ECCF02C0257B4FC900E1825C /* PenukaranTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PenukaranTableViewCell.xib; sourceTree = "<group>"; };
+		ECCF02C5257B66DE00E1825C /* PenukaranModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenukaranModel.swift; sourceTree = "<group>"; };
+		ECCF02C8257B66EB00E1825C /* PenukaranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenukaranData.swift; sourceTree = "<group>"; };
 		ECD09C3B2545512300C7BD05 /* HargaSampahCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HargaSampahCell.swift; sourceTree = "<group>"; };
 		ECD09C3C2545512300C7BD05 /* HargaSampahCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HargaSampahCell.xib; sourceTree = "<group>"; };
 		ECD09C452545548000C7BD05 /* HargaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HargaViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +101,6 @@
 		ECD09C562545E8D700C7BD05 /* TipsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECD09C572545E8D700C7BD05 /* TipsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipsCollectionViewCell.xib; sourceTree = "<group>"; };
 		ECD09C5C254667BC00C7BD05 /* TipsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsModel.swift; sourceTree = "<group>"; };
-		ECD09C5F254667C600C7BD05 /* TipsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsData.swift; sourceTree = "<group>"; };
 		ECD09C622546D87800C7BD05 /* SetoranViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetoranViewController.swift; sourceTree = "<group>"; };
 		ECD09C662546E3F400C7BD05 /* SetoranModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetoranModel.swift; sourceTree = "<group>"; };
 		ECD09C692546E40500C7BD05 /* SetoranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetoranData.swift; sourceTree = "<group>"; };
@@ -106,6 +123,7 @@
 		ECF174B3256D5B1B00A0EF98 /* NotifikasiDataLain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifikasiDataLain.swift; sourceTree = "<group>"; };
 		ECF174B8256E9DB900A0EF98 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		ECF174BB256EA6E800A0EF98 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		ECF174C5256FC51500A0EF98 /* SlideUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +274,7 @@
 		ECC18CCB253AD93B0034D711 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ECCF02BB257B4F5300E1825C /* Penukaran */,
 				ECF174B7256E9D8100A0EF98 /* Scan */,
 				ECBBE3702563937C00038FF5 /* Login */,
 				ECBBE3712563939300038FF5 /* Register */,
@@ -274,12 +293,15 @@
 				ECD09C482545556000C7BD05 /* JenisSampahModel.swift */,
 				ECD09C4B254555BA00C7BD05 /* JenisSampahData.swift */,
 				ECD09C5C254667BC00C7BD05 /* TipsModel.swift */,
-				ECD09C5F254667C600C7BD05 /* TipsData.swift */,
 				ECD09C662546E3F400C7BD05 /* SetoranModel.swift */,
 				ECD09C692546E40500C7BD05 /* SetoranData.swift */,
 				ECF174AD256D4E9A00A0EF98 /* NotifikasiModel.swift */,
 				ECF174B3256D5B1B00A0EF98 /* NotifikasiDataLain.swift */,
 				ECF174B0256D4EA700A0EF98 /* NotifikasiData.swift */,
+				ECAF935D2576076000ECDFF9 /* BarcodeModel.swift */,
+				ECAF9361257607AB00ECDFF9 /* BarcodeData.swift */,
+				ECCF02C5257B66DE00E1825C /* PenukaranModel.swift */,
+				ECCF02C8257B66EB00E1825C /* PenukaranData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,6 +319,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		ECCF02BB257B4F5300E1825C /* Penukaran */ = {
+			isa = PBXGroup;
+			children = (
+				ECCF02BC257B4F7400E1825C /* PenukaranViewController.swift */,
+			);
+			path = Penukaran;
+			sourceTree = "<group>";
+		};
 		ECD09C412545512D00C7BD05 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +334,7 @@
 				ECD09C3C2545512300C7BD05 /* HargaSampahCell.xib */,
 				ECD09C512545CE7100C7BD05 /* SetoranCell.xib */,
 				ECD09C572545E8D700C7BD05 /* TipsCollectionViewCell.xib */,
+				ECCF02C0257B4FC900E1825C /* PenukaranTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -315,6 +346,7 @@
 				ECD09C502545CE7100C7BD05 /* SetoranCell.swift */,
 				ECD09C562545E8D700C7BD05 /* TipsCollectionViewCell.swift */,
 				ECF174A7256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift */,
+				ECCF02BF257B4FC900E1825C /* PenukaranTableViewCell.swift */,
 			);
 			path = CellController;
 			sourceTree = "<group>";
@@ -354,8 +386,11 @@
 		ECF174B7256E9D8100A0EF98 /* Scan */ = {
 			isa = PBXGroup;
 			children = (
+				ECAF93502572A5DE00ECDFF9 /* BerhasilViewController.swift */,
 				ECF174B8256E9DB900A0EF98 /* ScanViewController.swift */,
 				ECF174BB256EA6E800A0EF98 /* CameraViewController.swift */,
+				ECF174C5256FC51500A0EF98 /* SlideUpViewController.swift */,
+				ECAF93542572A6A300ECDFF9 /* ScanBerhasilViewController.swift */,
 			);
 			path = Scan;
 			sourceTree = "<group>";
@@ -422,6 +457,7 @@
 			files = (
 				EC4AE7BA254BD883004554B8 /* GoogleService-Info.plist in Resources */,
 				ECEFE33A253B6D5800FA1139 /* sf-ui-display-light-58646b33e0551.otf in Resources */,
+				ECCF02C2257B4FC900E1825C /* PenukaranTableViewCell.xib in Resources */,
 				ECEFE33D253B6D5800FA1139 /* sf-ui-display-medium-58646be638f96.otf in Resources */,
 				ECC18CBD253ACB020034D711 /* LaunchScreen.storyboard in Resources */,
 				ECD09C3E2545512300C7BD05 /* HargaSampahCell.xib in Resources */,
@@ -507,13 +543,19 @@
 				EC7DFB3A256A0C2400B6306F /* EditAkunViewController.swift in Sources */,
 				ECD09C582545E8D800C7BD05 /* TipsCollectionViewCell.swift in Sources */,
 				ECEFE354253C611A00FA1139 /* DesignableTextField.swift in Sources */,
+				ECAF935E2576076000ECDFF9 /* BarcodeModel.swift in Sources */,
+				ECAF93512572A5DF00ECDFF9 /* BerhasilViewController.swift in Sources */,
+				ECAF9362257607AB00ECDFF9 /* BarcodeData.swift in Sources */,
 				ECD09C4C254555BA00C7BD05 /* JenisSampahData.swift in Sources */,
 				ECEFE358253E92E300FA1139 /* RegisterViewController.swift in Sources */,
 				ECEFE35D253FE1B400FA1139 /* DetailTipsViewController.swift in Sources */,
 				ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */,
 				ECBBE38425643B4100038FF5 /* HomeViewController.swift in Sources */,
+				ECCF02BD257B4F7400E1825C /* PenukaranViewController.swift in Sources */,
 				ECF1749F256D2AF400A0EF98 /* NotifikasiViewController.swift in Sources */,
 				ECF174B1256D4EA700A0EF98 /* NotifikasiData.swift in Sources */,
+				ECF174C6256FC51500A0EF98 /* SlideUpViewController.swift in Sources */,
+				ECCF02C1257B4FC900E1825C /* PenukaranTableViewCell.swift in Sources */,
 				ECF174AE256D4E9A00A0EF98 /* NotifikasiModel.swift in Sources */,
 				ECF174A9256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift in Sources */,
 				ECF1749B256CC09500A0EF98 /* PengaturanViewController.swift in Sources */,
@@ -525,14 +567,16 @@
 				ECD09C3D2545512300C7BD05 /* HargaSampahCell.swift in Sources */,
 				ECD09C6A2546E40500C7BD05 /* SetoranData.swift in Sources */,
 				ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */,
+				ECAF93552572A6A300ECDFF9 /* ScanBerhasilViewController.swift in Sources */,
 				ECD09C672546E3F400C7BD05 /* SetoranModel.swift in Sources */,
 				ECD09C5D254667BD00C7BD05 /* TipsModel.swift in Sources */,
 				ECD09C462545548000C7BD05 /* HargaViewController.swift in Sources */,
 				EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */,
 				ECC18CB8253ACB000034D711 /* Trashure.xcdatamodeld in Sources */,
 				ECD09C522545CE7100C7BD05 /* SetoranCell.swift in Sources */,
+				ECCF02C6257B66DE00E1825C /* PenukaranModel.swift in Sources */,
+				ECCF02C9257B66EB00E1825C /* PenukaranData.swift in Sources */,
 				ECF174B4256D5B1B00A0EF98 /* NotifikasiDataLain.swift in Sources */,
-				ECD09C60254667C600C7BD05 /* TipsData.swift in Sources */,
 				ECEFE34B253BFF5900FA1139 /* Checkbox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

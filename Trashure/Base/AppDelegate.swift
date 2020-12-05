@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         
         FirebaseApp.configure()
         print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last! as String)
+        
         return true
     }
 

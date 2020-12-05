@@ -39,6 +39,8 @@ class AkunViewController: UIViewController {
         let img = defaults.string(forKey: "url")
         let phone = defaults.string(forKey: "phone")
         let birth = defaults.string(forKey: "birthDate")
+        let level = defaults.string(forKey: "level")
+        let saldo = defaults.string(forKey: "saldo")
 
         let url = URL(string: img ?? "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg")
         self.profileImage.kf.setImage(with: url)
@@ -64,6 +66,9 @@ class AkunViewController: UIViewController {
         indicatorView.clipsToBounds = true
         indicatorView.layer.cornerRadius = 30
         indicatorView.layer.masksToBounds = false
+        
+        profileLevel.text = level
+        userSaldo.text = saldo
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()

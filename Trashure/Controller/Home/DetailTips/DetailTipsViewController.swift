@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailTipsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -13,7 +14,7 @@ class DetailTipsViewController: UIViewController {
     @IBOutlet weak var imageTips: UIImageView!
     @IBOutlet weak var isiLabel: UILabel!
     
-    var arrTips = TipsModel(tipsImage: nil, title: "", isi: "", date: "")
+    var arrTips = TipsModel(tipsImage: "", title: "", isi: "", date: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +24,11 @@ class DetailTipsViewController: UIViewController {
 
         navigationController?.navigationBar.tintColor = UIColor(named: "DarkBlue")
         
+        let url = URL(string: arrTips.tipsImage)
+        
         titleLabel.text = arrTips.title
         dateLabel.text = arrTips.date
-        imageTips.image = arrTips.tipsImage
+        imageTips.kf.setImage(with: url)
         isiLabel.text = arrTips.isi
     }
 

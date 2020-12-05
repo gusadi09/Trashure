@@ -7,6 +7,9 @@
 
 import UIKit
 import Charts
+import FirebaseFirestore
+import Kingfisher
+import Firebase
 
 class HomeViewController: UIViewController, ChartViewDelegate {
 
@@ -14,6 +17,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var viewDompet: UIView!
     @IBOutlet weak var trashbagLabel: UILabel!
     @IBOutlet weak var connectedLabel: UILabel!
+    @IBOutlet weak var levelText: UILabel!
     @IBOutlet weak var setoranTableView: UITableView!
     @IBOutlet weak var statView: UIView!
     @IBOutlet weak var chartView: UIView!
@@ -21,12 +25,15 @@ class HomeViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var mingguButton: UIButton!
     @IBOutlet weak var bulanButton: UIButton!
     @IBOutlet weak var tahunButton: UIButton!
+    @IBOutlet weak var saldoLabel: UILabel!
     
     lazy var barChart = BarChartView()
     
-    let dataTips = TipsData()
     let setoranData = SetoranData()
-    var arrSelectRow = TipsModel(tipsImage: nil, title: "", isi: "", date: "")
+    var arrSelectRow = TipsModel(tipsImage: "", title: "", isi: "", date: "")
+    let defaults = UserDefaults.standard
+    var tips : [TipsModel] = []
+    let db = Firestore.firestore()
     
     let date = Date()
     var trashbagM = [Double]()
@@ -55,6 +62,33 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         tipsCollectionView.register(UINib(nibName: "TipsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "tipsCell")
         
         barChart.delegate = self
+        
+        loadTips()
+    }
+    
+    func loadTips() {
+        db.collection("tips").getDocuments { (qs, err) in
+            self.tips = []
+            
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in qs!.documents {
+                    //print("\(document.documentID) => \(document.data())")
+                    let img = document.data()["pic"] as! String
+                    
+                    let judul = document.data()["title"] as! String
+                    let isi = document.data()["isi"] as! String
+                    let tanggal = document.data()["tanggal"] as! String
+                    let model = TipsModel(tipsImage: img, title: judul, isi: isi, date: tanggal)
+                    
+                    self.tips.append(model)
+                    DispatchQueue.main.async {
+                        self.tipsCollectionView.reloadData()
+                    }
+                }
+            }
+        }
     }
     
     
@@ -132,7 +166,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         
         mingguButton.addSubview(lineViewMinggu)
         
-        lineViewBulan.backgroundColor = UIColor(named: "green")
+        lineViewBulan.backgroundColor = UIColor(named : "green")
         
         lineViewTahun.backgroundColor = UIColor(named: "green")
         
@@ -145,6 +179,12 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         lineViewTahun.clipsToBounds = true
         lineViewTahun.layer.cornerRadius = 1
         
+        let level = defaults.string(forKey: "level")
+        let saldo = defaults.string(forKey: "saldo")
+        
+        levelText.text = level
+        saldoLabel.text = saldo
+        
         setupCharts(xVal: day, yVal: trashbagM, maxVal: 20.0, width: 0.15)
         
         var i = 0
@@ -154,6 +194,8 @@ class HomeViewController: UIViewController, ChartViewDelegate {
             i += 1
         }
         print("total: \(totalM)")
+        
+        
     }
     
     //MARK: Bar Charts
@@ -311,22 +353,26 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataTips.data.count
+        
+        return tips.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tipsCell", for: indexPath) as! TipsCollectionViewCell
-        
-        cell.tipsImage.image = dataTips.data[indexPath.row].tipsImage
-        cell.titleLabel.text = dataTips.data[indexPath.row].title
+       
+        let url = URL(string: tips[indexPath.row].tipsImage)
+        cell.tipsImage.kf.setImage(with: url)
+        cell.titleLabel.text = tips[indexPath.row].title
         
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        self.arrSelectRow = dataTips.data[indexPath.row]
+        
+        self.arrSelectRow = tips[indexPath.row]
         
         performSegue(withIdentifier: "toDetailTips", sender: cell)
     }
