@@ -29,6 +29,13 @@
 		ECCF02C2257B4FC900E1825C /* PenukaranTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCF02C0257B4FC900E1825C /* PenukaranTableViewCell.xib */; };
 		ECCF02C6257B66DE00E1825C /* PenukaranModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02C5257B66DE00E1825C /* PenukaranModel.swift */; };
 		ECCF02C9257B66EB00E1825C /* PenukaranData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02C8257B66EB00E1825C /* PenukaranData.swift */; };
+		ECCF02D22580940800E1825C /* NominalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02D02580940800E1825C /* NominalCell.swift */; };
+		ECCF02D32580940800E1825C /* NominalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECCF02D12580940800E1825C /* NominalCell.xib */; };
+		ECCF02D72580943100E1825C /* NominalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02D62580943100E1825C /* NominalViewController.swift */; };
+		ECCF02DA2580B0CC00E1825C /* KonfirmasiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02D92580B0CC00E1825C /* KonfirmasiViewController.swift */; };
+		ECCF02E02580B17400E1825C /* KonfirmasiBerhasilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02DF2580B17400E1825C /* KonfirmasiBerhasilViewController.swift */; };
+		ECCF02E42580E2CE00E1825C /* NominalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02E32580E2CE00E1825C /* NominalModel.swift */; };
+		ECCF02E72580E32300E1825C /* NominalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF02E62580E32300E1825C /* NominalData.swift */; };
 		ECD09C3D2545512300C7BD05 /* HargaSampahCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C3B2545512300C7BD05 /* HargaSampahCell.swift */; };
 		ECD09C3E2545512300C7BD05 /* HargaSampahCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECD09C3C2545512300C7BD05 /* HargaSampahCell.xib */; };
 		ECD09C462545548000C7BD05 /* HargaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD09C452545548000C7BD05 /* HargaViewController.swift */; };
@@ -91,6 +98,13 @@
 		ECCF02C0257B4FC900E1825C /* PenukaranTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PenukaranTableViewCell.xib; sourceTree = "<group>"; };
 		ECCF02C5257B66DE00E1825C /* PenukaranModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenukaranModel.swift; sourceTree = "<group>"; };
 		ECCF02C8257B66EB00E1825C /* PenukaranData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenukaranData.swift; sourceTree = "<group>"; };
+		ECCF02D02580940800E1825C /* NominalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalCell.swift; sourceTree = "<group>"; };
+		ECCF02D12580940800E1825C /* NominalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NominalCell.xib; sourceTree = "<group>"; };
+		ECCF02D62580943100E1825C /* NominalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalViewController.swift; sourceTree = "<group>"; };
+		ECCF02D92580B0CC00E1825C /* KonfirmasiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonfirmasiViewController.swift; sourceTree = "<group>"; };
+		ECCF02DF2580B17400E1825C /* KonfirmasiBerhasilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KonfirmasiBerhasilViewController.swift; sourceTree = "<group>"; };
+		ECCF02E32580E2CE00E1825C /* NominalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalModel.swift; sourceTree = "<group>"; };
+		ECCF02E62580E32300E1825C /* NominalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominalData.swift; sourceTree = "<group>"; };
 		ECD09C3B2545512300C7BD05 /* HargaSampahCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HargaSampahCell.swift; sourceTree = "<group>"; };
 		ECD09C3C2545512300C7BD05 /* HargaSampahCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HargaSampahCell.xib; sourceTree = "<group>"; };
 		ECD09C452545548000C7BD05 /* HargaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HargaViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +316,8 @@
 				ECAF9361257607AB00ECDFF9 /* BarcodeData.swift */,
 				ECCF02C5257B66DE00E1825C /* PenukaranModel.swift */,
 				ECCF02C8257B66EB00E1825C /* PenukaranData.swift */,
+				ECCF02E32580E2CE00E1825C /* NominalModel.swift */,
+				ECCF02E62580E32300E1825C /* NominalData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,6 +339,9 @@
 			isa = PBXGroup;
 			children = (
 				ECCF02BC257B4F7400E1825C /* PenukaranViewController.swift */,
+				ECCF02D62580943100E1825C /* NominalViewController.swift */,
+				ECCF02D92580B0CC00E1825C /* KonfirmasiViewController.swift */,
+				ECCF02DF2580B17400E1825C /* KonfirmasiBerhasilViewController.swift */,
 			);
 			path = Penukaran;
 			sourceTree = "<group>";
@@ -330,6 +349,7 @@
 		ECD09C412545512D00C7BD05 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				ECCF02D12580940800E1825C /* NominalCell.xib */,
 				ECF174A8256D2EDD00A0EF98 /* NotifikasiTableViewCell.xib */,
 				ECD09C3C2545512300C7BD05 /* HargaSampahCell.xib */,
 				ECD09C512545CE7100C7BD05 /* SetoranCell.xib */,
@@ -347,6 +367,7 @@
 				ECD09C562545E8D700C7BD05 /* TipsCollectionViewCell.swift */,
 				ECF174A7256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift */,
 				ECCF02BF257B4FC900E1825C /* PenukaranTableViewCell.swift */,
+				ECCF02D02580940800E1825C /* NominalCell.swift */,
 			);
 			path = CellController;
 			sourceTree = "<group>";
@@ -469,6 +490,7 @@
 				ECF174AA256D2EDD00A0EF98 /* NotifikasiTableViewCell.xib in Resources */,
 				ECD09C532545CE7100C7BD05 /* SetoranCell.xib in Resources */,
 				ECD09C592545E8D800C7BD05 /* TipsCollectionViewCell.xib in Resources */,
+				ECCF02D32580940800E1825C /* NominalCell.xib in Resources */,
 				ECC18CD0253B6AF70034D711 /* GOOGLESANS-REGULAR.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,12 +563,14 @@
 			files = (
 				ECC18CB2253ACB000034D711 /* ViewController.swift in Sources */,
 				EC7DFB3A256A0C2400B6306F /* EditAkunViewController.swift in Sources */,
+				ECCF02E72580E32300E1825C /* NominalData.swift in Sources */,
 				ECD09C582545E8D800C7BD05 /* TipsCollectionViewCell.swift in Sources */,
 				ECEFE354253C611A00FA1139 /* DesignableTextField.swift in Sources */,
 				ECAF935E2576076000ECDFF9 /* BarcodeModel.swift in Sources */,
 				ECAF93512572A5DF00ECDFF9 /* BerhasilViewController.swift in Sources */,
 				ECAF9362257607AB00ECDFF9 /* BarcodeData.swift in Sources */,
 				ECD09C4C254555BA00C7BD05 /* JenisSampahData.swift in Sources */,
+				ECCF02E02580B17400E1825C /* KonfirmasiBerhasilViewController.swift in Sources */,
 				ECEFE358253E92E300FA1139 /* RegisterViewController.swift in Sources */,
 				ECEFE35D253FE1B400FA1139 /* DetailTipsViewController.swift in Sources */,
 				ECC18CAE253ACB000034D711 /* AppDelegate.swift in Sources */,
@@ -557,6 +581,7 @@
 				ECF174C6256FC51500A0EF98 /* SlideUpViewController.swift in Sources */,
 				ECCF02C1257B4FC900E1825C /* PenukaranTableViewCell.swift in Sources */,
 				ECF174AE256D4E9A00A0EF98 /* NotifikasiModel.swift in Sources */,
+				ECCF02D22580940800E1825C /* NominalCell.swift in Sources */,
 				ECF174A9256D2EDD00A0EF98 /* NotifikasiTableViewCell.swift in Sources */,
 				ECF1749B256CC09500A0EF98 /* PengaturanViewController.swift in Sources */,
 				ECF174A4256D2B8200A0EF98 /* DetailNotifViewController.swift in Sources */,
@@ -565,15 +590,18 @@
 				ECD09C492545556000C7BD05 /* JenisSampahModel.swift in Sources */,
 				ECF174B9256E9DB900A0EF98 /* ScanViewController.swift in Sources */,
 				ECD09C3D2545512300C7BD05 /* HargaSampahCell.swift in Sources */,
+				ECCF02DA2580B0CC00E1825C /* KonfirmasiViewController.swift in Sources */,
 				ECD09C6A2546E40500C7BD05 /* SetoranData.swift in Sources */,
 				ECC18CB0253ACB000034D711 /* SceneDelegate.swift in Sources */,
 				ECAF93552572A6A300ECDFF9 /* ScanBerhasilViewController.swift in Sources */,
 				ECD09C672546E3F400C7BD05 /* SetoranModel.swift in Sources */,
+				ECCF02E42580E2CE00E1825C /* NominalModel.swift in Sources */,
 				ECD09C5D254667BD00C7BD05 /* TipsModel.swift in Sources */,
 				ECD09C462545548000C7BD05 /* HargaViewController.swift in Sources */,
 				EC4C5F28254BEF0700272CDC /* AkunViewController.swift in Sources */,
 				ECC18CB8253ACB000034D711 /* Trashure.xcdatamodeld in Sources */,
 				ECD09C522545CE7100C7BD05 /* SetoranCell.swift in Sources */,
+				ECCF02D72580943100E1825C /* NominalViewController.swift in Sources */,
 				ECCF02C6257B66DE00E1825C /* PenukaranModel.swift in Sources */,
 				ECCF02C9257B66EB00E1825C /* PenukaranData.swift in Sources */,
 				ECF174B4256D5B1B00A0EF98 /* NotifikasiDataLain.swift in Sources */,

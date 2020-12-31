@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -121,9 +121,6 @@
                                             <constraint firstAttribute="height" constant="17" id="ytL-ab-JZ5"/>
                                         </constraints>
                                         <state key="normal" image="arrowDown"/>
-                                        <connections>
-                                            <action selector="opeNominalPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d0U-O9-fgo"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -141,10 +138,17 @@
                                     <action selector="tukarPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="b7i-rC-hTt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dv-tJ-w8z">
+                                <rect key="frame" x="20" y="189" width="334" height="28"/>
+                                <connections>
+                                    <action selector="openNominalPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PAS-ur-XNH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ZpS-4X-paV" secondAttribute="trailing" constant="20" id="3Qf-lP-u2O"/>
+                            <constraint firstAttribute="trailing" secondItem="9dv-tJ-w8z" secondAttribute="trailing" constant="20" symbolic="YES" id="4dA-6S-h9Y"/>
                             <constraint firstItem="UXQ-Zo-UCb" firstAttribute="top" secondItem="hlJ-cK-4x7" secondAttribute="top" constant="19" id="5M7-O1-gXC"/>
                             <constraint firstItem="EEK-fG-zTf" firstAttribute="leading" secondItem="hlJ-cK-4x7" secondAttribute="leading" constant="20" id="5gq-qD-Tlz"/>
                             <constraint firstItem="rHN-me-2Fm" firstAttribute="top" secondItem="hlJ-cK-4x7" secondAttribute="top" constant="24" id="6Hm-zJ-qeF"/>
@@ -157,6 +161,7 @@
                             <constraint firstItem="6bn-ag-ZKe" firstAttribute="top" secondItem="nVV-wU-AKu" secondAttribute="bottom" constant="23" id="LMY-EW-3GS"/>
                             <constraint firstAttribute="trailing" secondItem="968-5E-iKr" secondAttribute="trailing" constant="20" id="Lce-Jy-Q3U"/>
                             <constraint firstItem="dHg-1f-N6a" firstAttribute="leading" secondItem="hlJ-cK-4x7" secondAttribute="leading" constant="20" id="Ni1-xW-lV3"/>
+                            <constraint firstItem="9dv-tJ-w8z" firstAttribute="top" secondItem="EEK-fG-zTf" secondAttribute="bottom" constant="3" id="S0b-MZ-iUA"/>
                             <constraint firstItem="dHg-1f-N6a" firstAttribute="top" secondItem="hIQ-0S-CRG" secondAttribute="bottom" constant="3" id="Tkg-fg-lsh"/>
                             <constraint firstItem="ZpS-4X-paV" firstAttribute="top" secondItem="EEK-fG-zTf" secondAttribute="bottom" constant="9" id="Ul2-0a-ghi"/>
                             <constraint firstAttribute="trailing" secondItem="nVV-wU-AKu" secondAttribute="trailing" id="UtN-K3-C9J"/>
@@ -171,6 +176,8 @@
                             <constraint firstItem="968-5E-iKr" firstAttribute="top" secondItem="dHg-1f-N6a" secondAttribute="bottom" constant="25" id="iMq-1L-DeF"/>
                             <constraint firstAttribute="trailing" secondItem="vtc-Al-Ll7" secondAttribute="trailing" constant="20" id="kIf-Cv-0rP"/>
                             <constraint firstItem="nVV-wU-AKu" firstAttribute="top" secondItem="UXQ-Zo-UCb" secondAttribute="bottom" constant="25" id="kTQ-he-W8Z"/>
+                            <constraint firstItem="9dv-tJ-w8z" firstAttribute="leading" secondItem="hlJ-cK-4x7" secondAttribute="leading" constant="20" symbolic="YES" id="pOO-lw-qb3"/>
+                            <constraint firstItem="dHg-1f-N6a" firstAttribute="top" secondItem="9dv-tJ-w8z" secondAttribute="bottom" constant="3" id="r94-ej-E5r"/>
                             <constraint firstAttribute="trailing" secondItem="hIQ-0S-CRG" secondAttribute="trailing" constant="20" id="vtk-a4-Mwg"/>
                             <constraint firstItem="EEK-fG-zTf" firstAttribute="top" secondItem="vtc-Al-Ll7" secondAttribute="bottom" constant="20" id="zY5-l7-MLp"/>
                         </constraints>
@@ -193,6 +200,7 @@
                 <outlet property="hargalabel" destination="jYH-1E-J6s" id="I4D-xA-bW3"/>
                 <outlet property="nohpField" destination="vtc-Al-Ll7" id="yKd-zm-Rdf"/>
                 <outlet property="nohpLabel" destination="6bn-ag-ZKe" id="snW-jX-7ae"/>
+                <outlet property="nominalButton" destination="9dv-tJ-w8z" id="2Rb-5i-szo"/>
                 <outlet property="nominalLabel" destination="EEK-fG-zTf" id="Pzm-AV-qmQ"/>
                 <outlet property="nominalText" destination="1gq-j4-EwX" id="Eif-Ry-4z5"/>
                 <outlet property="openNominalButton" destination="VS2-Fl-Ahh" id="sdi-4b-AC1"/>

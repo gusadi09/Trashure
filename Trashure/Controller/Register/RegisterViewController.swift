@@ -64,7 +64,7 @@ class RegisterViewController: UIViewController, GIDSignInDelegate {
                 "birth": "",
                 "userpic": String(describing: image!),
                 "level": "Trashure Junior",
-                "Saldo": "Rp.\(saldo)"
+                "Saldo": "\(saldo)"
             ]) { err in
                 if let e = err {
                     print("Error adding document: \(e)")
@@ -246,7 +246,7 @@ class RegisterViewController: UIViewController, GIDSignInDelegate {
                         "birth": "",
                         "userpic": "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg",
                         "level": "Trashure Junior",
-                        "Saldo": "Rp.\(self.saldo)"
+                        "Saldo": "\(self.saldo)"
                     ]) { err in
                         if let e = err {
                             print("Error adding document: \(e)")
@@ -336,7 +336,7 @@ class RegisterViewController: UIViewController, GIDSignInDelegate {
                                 "birth": "",
                                 "userpic": String(describing: result!.user.photoURL!),
                                 "level": "Trashure Junior",
-                                "Saldo": "Rp.\(self.saldo)"
+                                "Saldo": "\(self.saldo)"
                             ]) { err in
                                 if let e = err {
                                     print("Error adding document: \(e)")

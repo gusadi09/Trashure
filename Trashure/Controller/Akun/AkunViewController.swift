@@ -11,7 +11,6 @@ import GoogleSignIn
 import Kingfisher
 
 class AkunViewController: UIViewController {
-    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var profileLevel: UILabel!
     @IBOutlet weak var userSaldo: UILabel!
@@ -24,36 +23,78 @@ class AkunViewController: UIViewController {
     @IBOutlet weak var keluarButton: UIButton!
     
     let defaults = UserDefaults.standard
-
     
+    let imgView = UIImageView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setUI()
+        DispatchQueue.main.async {
+            self.setUI()
+        }
+        
 
     }
     
-    func setUI() {
-        let name = defaults.string(forKey: "namaLengkap")
-        let email = defaults.string(forKey: "email")
-        let img = defaults.string(forKey: "url")
-        let phone = defaults.string(forKey: "phone")
-        let birth = defaults.string(forKey: "birthDate")
-        let level = defaults.string(forKey: "level")
-        let saldo = defaults.string(forKey: "saldo")
-
-        let url = URL(string: img ?? "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg")
-        self.profileImage.kf.setImage(with: url)
-        self.profileName.text = name
-        self.profilePhone.text = phone ?? " "
-        self.profileEmail.text = email
-        self.profileLahir.text = birth
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        profileImage.layer.borderWidth = 3
-        profileImage.layer.masksToBounds = false
-        profileImage.layer.borderColor = UIColor.white.cgColor
-        profileImage.layer.cornerRadius = profileImage.frame.height/2
-        profileImage.clipsToBounds = true
+        DispatchQueue.main.async {
+            guard let name = self.defaults.string(forKey: "namaLengkap") else {return}
+            guard let email = self.defaults.string(forKey: "email") else {return}
+            guard let phone = self.defaults.string(forKey: "phone") else {return}
+            guard let birth = self.defaults.string(forKey: "birthDate") else {return}
+            guard let level = self.defaults.string(forKey: "level") else {return}
+            guard let saldo = self.defaults.string(forKey: "saldo") else {return}
+            let img = UserDefaults.standard.string(forKey: "url")
+            
+            self.profileName.text = name
+            self.profilePhone.text = phone
+            self.profileEmail.text = email
+            self.profileLahir.text = birth
+            
+            let url = URL(string: img ?? "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg")
+            self.imgView.kf.setImage(with: url)
+            
+            self.profileLevel.text = level
+            self.userSaldo.text = "Rp. \(saldo)"
+        }
+        
+    }
+    
+    func setUI() {
+
+        self.imgView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        imgView.layer.borderWidth = 3
+        imgView.layer.masksToBounds = false
+        imgView.layer.borderColor = UIColor.white.cgColor
+        imgView.layer.cornerRadius = imgView.frame.height/2
+        imgView.clipsToBounds = true
+        
+        self.imgView.center = CGPoint(x: profileName.frame.width/2, y: profileName.frame.height/2 - 70)
+        self.profileName.addSubview(imgView)
+       
+        DispatchQueue.main.async {
+            guard let name = self.defaults.string(forKey: "namaLengkap") else {return}
+            guard let email = self.defaults.string(forKey: "email") else {return}
+            guard let phone = self.defaults.string(forKey: "phone") else {return}
+            guard let birth = self.defaults.string(forKey: "birthDate") else {return}
+            guard let level = self.defaults.string(forKey: "level") else {return}
+            guard let saldo = self.defaults.string(forKey: "saldo") else {return}
+            let img = UserDefaults.standard.string(forKey: "url")
+            
+            let url = URL(string: img ?? "https://icon-library.com/images/default-user-icon/default-user-icon-4.jpg")
+            
+            self.profileName.text = name
+            self.profilePhone.text = phone
+            self.profileEmail.text = email
+            self.profileLahir.text = birth
+    
+            self.imgView.kf.setImage(with: url)
+            
+            self.profileLevel.text = level
+            self.userSaldo.text = "Rp. \(saldo)"
+        }
         
         allView.clipsToBounds = true
         allView.layer.cornerRadius = 5
@@ -67,8 +108,7 @@ class AkunViewController: UIViewController {
         indicatorView.layer.cornerRadius = 30
         indicatorView.layer.masksToBounds = false
         
-        profileLevel.text = level
-        userSaldo.text = saldo
+        
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -96,15 +136,20 @@ class AkunViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as? EditAkunViewController
+        guard let controller = segue.destination as? EditAkunViewController else {return}
+        guard let name = self.profileName.text else {return}
+        guard let mail = self.profileEmail.text else {return}
+        guard let phone = self.profilePhone.text else {return}
+        guard let lahir = self.profileLahir.text else {return}
+        guard let image = self.imgView.image else {return}
         
         if segue.identifier == "toEdit" {
             DispatchQueue.main.async {
-                controller?.nameField.text = self.profileName.text
-                controller?.emailField.text = self.profileEmail.text
-                controller?.phoneField.text = self.profilePhone.text
-                controller?.birthField.text = self.profileLahir.text
-                controller?.profileImage.image = self.profileImage.image
+                controller.nameField?.text = name
+                controller.emailField?.text = mail
+                controller.phoneField?.text = phone
+                controller.birthField?.text = lahir
+                controller.profileImage?.image = image
             }
         }
     }
@@ -113,7 +158,13 @@ class AkunViewController: UIViewController {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
-            dismiss(animated: true, completion: nil)
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "navbarVC")
+            loginVC.modalPresentationStyle = .fullScreen
+            present(loginVC, animated: true, completion: nil)
+            //dismiss(animated: true, completion: nil)
+            self.present(ViewController(), animated: true, completion: nil)
+            self.defaults.set("false", forKey: "statusLogin")
+            self.defaults.synchronize()
             print("sign out success")
         } catch let signOutError as NSError {
             print("error signing out: \(signOutError)")

@@ -67,22 +67,6 @@ class ViewController: UIViewController, GIDSignInDelegate {
             let image = user?.profile.imageURL(withDimension: 100)
             
             let ref = self.db.collection("users").document(String(describing: userId!))
-            ref.setData( [
-                "uid": userId!,
-                "nama": fullName ?? "",
-                "nohp": "",
-                "email": email ?? "",
-                "birth": "",
-                "userpic": String(describing: image!),
-                "level": "Trashure Junior",
-                "Saldo": "Rp.\(saldo)"
-            ]) { err in
-                if let e = err {
-                    print("Error adding document: \(e)")
-                } else {
-                    print("Document added")
-                }
-            }
             
             db.collection("users").getDocuments { (qs, err) in
                 if let err = err {
@@ -108,10 +92,29 @@ class ViewController: UIViewController, GIDSignInDelegate {
                             self.defaults.set(self.uid, forKey: "id")
                             self.defaults.set(self.level, forKey: "level")
                             self.defaults.set(self.uang, forKey: "saldo")
+                            self.defaults.set("true", forKey: "statusLogin")
                     
                             self.defaults.synchronize()
-                            
+                        
                             break
+                            
+                        } else {
+                            ref.setData( [
+                                "uid": userId!,
+                                "nama": fullName ?? "",
+                                "nohp": "",
+                                "email": email ?? "",
+                                "birth": "",
+                                "userpic": String(describing: image!),
+                                "level": "Trashure Junior",
+                                "Saldo": "\(self.saldo)"
+                            ]) { err in
+                                if let e = err {
+                                    print("Error adding document: \(e)")
+                                } else {
+                                    print("Document added")
+                                }
+                            }
                         }
                     }
                 }
@@ -131,6 +134,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
                 print(error)
                 return
             }
+            
             print("User signed in with firebase")
         }
         
@@ -216,6 +220,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
                 if let e = err {
                     print("error: \(e)")
                 } else {
+                    self.defaults.set("true", forKey: "statusLogin")
             
                     self.db.collection("users").getDocuments { (qs, err) in
                         if let err = err {
@@ -251,7 +256,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
                         }
                     }
                     
-                    self.performSegue(withIdentifier: "RegisterToHome", sender: self)
+                    self.performSegue(withIdentifier: "toHome", sender: self)
                 }
             }
         }
@@ -285,23 +290,9 @@ class ViewController: UIViewController, GIDSignInDelegate {
                         if let error = error {
                             print("error: \(error.localizedDescription)")
                         } else {
+                            self.defaults.set("true", forKey: "statusLogin")
+                            
                             let ref = self.db.collection("users").document(String(describing: result!.user.uid))
-                            ref.setData( [
-                                "uid": result?.user.uid ?? "",
-                                "nama": result?.user.displayName ?? "",
-                                "nohp": result?.user.phoneNumber ?? "",
-                                "email": result?.user.email ?? "",
-                                "birth": "",
-                                "userpic": String(describing: result!.user.photoURL!),
-                                "level": "Trashure Junior",
-                                "Saldo": "Rp.\(self.saldo)"
-                            ]) { err in
-                                if let e = err {
-                                    print("Error adding document: \(e)")
-                                } else {
-                                    print("Document added")
-                                }
-                            }
                             
                             self.db.collection("users").getDocuments { (qs, err) in
                                 if let err = err {
@@ -331,6 +322,23 @@ class ViewController: UIViewController, GIDSignInDelegate {
                                             self.defaults.synchronize()
                                             
                                             break
+                                        } else {
+                                            ref.setData( [
+                                                "uid": result?.user.uid ?? "",
+                                                "nama": result?.user.displayName ?? "",
+                                                "nohp": result?.user.phoneNumber ?? "",
+                                                "email": result?.user.email ?? "",
+                                                "birth": "",
+                                                "userpic": String(describing: result!.user.photoURL!),
+                                                "level": "Trashure Junior",
+                                                "Saldo": "\(self.saldo)"
+                                            ]) { err in
+                                                if let e = err {
+                                                    print("Error adding document: \(e)")
+                                                } else {
+                                                    print("Document added")
+                                                }
+                                            }
                                         }
                                     }
                                 }

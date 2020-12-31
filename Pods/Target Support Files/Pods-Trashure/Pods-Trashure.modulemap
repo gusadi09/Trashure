@@ -1,0 +1,6 @@
+framework module Pods_Trashure {
+  umbrella header "Pods-Trashure-umbrella.h"
+
+  export *
+  module * { export * }
+}

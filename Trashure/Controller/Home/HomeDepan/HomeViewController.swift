@@ -183,7 +183,7 @@ class HomeViewController: UIViewController, ChartViewDelegate {
         let saldo = defaults.string(forKey: "saldo")
         
         levelText.text = level
-        saldoLabel.text = saldo
+        saldoLabel.text = "Rp. \(saldo ?? "0")"
         
         setupCharts(xVal: day, yVal: trashbagM, maxVal: 20.0, width: 0.15)
         

@@ -6,43 +6,53 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
 
-class EditAkunViewController: UIViewController {
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet var phoneField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var birthField: UITextField!
+class EditAkunViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBOutlet weak var profileImage: UIImageView?
+    @IBOutlet weak var nameField: UITextField?
+    @IBOutlet weak var phoneField: UITextField?
+    @IBOutlet weak var emailField: UITextField?
+    @IBOutlet weak var birthField: UITextField?
     @IBOutlet weak var simpanButton: UIButton!
     
+    var imagePicker = UIImagePickerController()
+    
     let thickness: CGFloat = 4.0
+    
+    let db = Firestore.firestore()
+    let defaults = UserDefaults.standard
+    let storage = Storage.storage()
+    
+    var urlStorage = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileImage.layer.masksToBounds = false
-        profileImage.layer.cornerRadius = profileImage.frame.height/2
-        profileImage.clipsToBounds = true
+        profileImage!.layer.masksToBounds = false
+        profileImage!.layer.cornerRadius = profileImage!.frame.size.height/2
+        profileImage!.clipsToBounds = true
         
-        let lineViewName = UIView(frame: CGRect(x: 0, y: nameField.frame.size.height + thickness, width: nameField.frame.size.width, height: 1))
+        let lineViewName = UIView(frame: CGRect(x: 0, y: nameField!.frame.size.height + thickness, width: nameField!.frame.size.width, height: 1))
         lineViewName.backgroundColor = .opaqueSeparator
         
-        nameField.addSubview(lineViewName)
+        nameField!.addSubview(lineViewName)
         
-        let lineViewPhone = UIView(frame: CGRect(x: 0, y: phoneField.frame.size.height + thickness, width: phoneField.frame.size.width, height: 1))
+        let lineViewPhone = UIView(frame: CGRect(x: 0, y: phoneField!.frame.size.height + thickness, width: phoneField!.frame.size.width, height: 1))
         lineViewPhone.backgroundColor = .opaqueSeparator
         
-        phoneField.addSubview(lineViewPhone)
+        phoneField!.addSubview(lineViewPhone)
         
-        let lineViewEmail = UIView(frame: CGRect(x: 0, y: emailField.frame.size.height + thickness, width: emailField.frame.size.width, height: 1))
+        let lineViewEmail = UIView(frame: CGRect(x: 0, y: emailField!.frame.size.height + thickness, width: emailField!.frame.size.width, height: 1))
         lineViewEmail.backgroundColor = .opaqueSeparator
         
-        emailField.addSubview(lineViewEmail)
+        emailField!.addSubview(lineViewEmail)
         
-        let lineViewBirth = UIView(frame: CGRect(x: 0, y: birthField.frame.size.height + thickness, width: birthField.frame.size.width, height: 1))
+        let lineViewBirth = UIView(frame: CGRect(x: 0, y: birthField!.frame.size.height + thickness, width: birthField!.frame.size.width, height: 1))
         lineViewBirth.backgroundColor = .opaqueSeparator
         
-        birthField.addSubview(lineViewBirth)
+        birthField!.addSubview(lineViewBirth)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -92,18 +102,84 @@ class EditAkunViewController: UIViewController {
     }
     
     @IBAction func photoPressed(_ sender: UIButton) {
-    }
-    @IBAction func simpanPressed(_ sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            
+            present(imagePicker, animated: true, completion: nil)
+        }
     }
     
-    /*
-    // MARK: - Navigation
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let uid = defaults.string(forKey: "id") else {return}
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            guard let data = pickedImage.jpegData(compressionQuality: 0.75) else {return}
+            
+            let storageRef = storage.reference()
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            let photoRef = storageRef.child("images/profile\(uid).jpg")
+
+            let uploadTask = photoRef.putData(data, metadata: nil) { (metadata, error) in
+              guard let metadata = metadata else {
+                return
+              }
+                
+              let size = metadata.size
+              print(size)
+              photoRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                  return
+                }
+                
+                self.urlStorage = "\(downloadURL)"
+                
+                self.profileImage?.contentMode = .scaleAspectFill
+                self.profileImage?.kf.setImage(with: downloadURL)
+              }
+            }
+            print(uploadTask)
+        }
+        
+        dismiss(animated: true, completion: nil)
     }
-    */
-
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func simpanPressed(_ sender: UIButton) {
+        guard let nama = self.nameField?.text else {return}
+        guard let hp = self.phoneField?.text else {return}
+        guard let email = self.emailField?.text else {return}
+        guard let birth = self.birthField?.text else {return}
+        
+        if let uid = defaults.string(forKey: "id") {
+            let sfReference = db.collection("users").document(uid)
+            
+            db.runTransaction { (transaction, errPointer) -> Any? in
+                
+                transaction.updateData(["nama" : nama, "nohp" : hp, "email" : email, "birth" : birth, "userpic" : self.urlStorage], forDocument: sfReference)
+    
+                return nil
+            } completion: { (object, error) in
+                if let error = error {
+                    print("Transaction failed: \(error)")
+                } else {
+                    print("Transaction successfully committed!")
+                    DispatchQueue.main.async {
+                        self.defaults.setValue(nama, forKey: "namaLengkap")
+                        self.defaults.setValue(email, forKey: "email")
+                        self.defaults.setValue(birth, forKey: "birthDate")
+                        self.defaults.setValue(hp, forKey: "phone")
+                        self.defaults.setValue(self.urlStorage, forKey: "url")
+                        
+                        self.defaults.synchronize()
+                    }
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
 }
